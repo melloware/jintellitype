@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document xmlns="http://maven.apache.org/changes/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+
+  <properties>
+    <title>Release Notes</title>
+    <author email="mellowaredev_at_gmail_dot_com">Melloware</author>
+  </properties>
+
+  <body>
+    <release version="1.3.5" date="2010-10-11" description="Extract DLL from JAR">
+      <action dev="mellowaredev@gmail.com" type="add" due-to="Wordoholic" due-to-email="">
+        Modified JIntellitype.java a bit so that it would a)copy .dll files from jar to a temp location and b)load 64bit .dll if 32bit fails. Tested on WinXP 32bit and Win7 64bit (with 64bit JVM).
+      </action>
+    </release>
+    <release version="1.3.4" date="2010-04-21" description="Strings for RegisterHotKey">
+      <action dev="mellowaredev@gmail.com" type="add" due-to="Lars" due-to-email="">
+        Now enables the user to use all keys instead of just [A-Z],[0-9] as before
+      </action>
+    </release>
+    <release version="1.3.3" date="2010-01-25" description="x64 DLL">
+      <action dev="mellowaredev@gmail.com" type="fix" due-to="ZeroFlag" due-to-email="">
+        Added JIntellitype64.dll for 64 bit JRE's.  Simply rename the DLL to
+		JIntellitype.dll or use the Jintellitype.setLibraryLocation(''); function
+		to set the path to JIntellitype64.dll.
+      </action>
+    </release>
+    <release version="1.3.2" date="2009-07-31" description="Library Location Fix">
+      <action dev="mellowaredev@gmail.com" type="fix" due-to="Johannes Frank" due-to-email="">
+        Fixed "Jintellitype.setLibraryLocation('');" method to to allow developers
+		to set the path of the JIntellitype.DLL for use in executable jar's etc.
+      </action>
+      <action dev="mellowaredev@gmail.com" type="fix" due-to="Johannes Frank" due-to-email="">
+        Removed Commons-Logging dependency
+      </action>
+    </release>
+    <release version="1.3.1" date="2008-02-11" description="SwingToIntellitype Fix">
+      <action dev="mellowaredev@gmail.com" type="fix" due-to="Thomas Beckers" due-to-email="">
+        Fixed "Jintellitype.swingToIntelliType()" method to handle both the old
+        style and new style Swing/AWT modifiers.  Such as the older InputEvent.SHIFT_MASK
+        and the newer InputEvent.SHIFT_DOWN_MASK will both return the SHIFT 
+        modifier.
+      </action>
+    </release>
+    <release version="1.3" date="2008-01-09" description="Critical Update">
+      <action dev="mellowaredev@gmail.com" type="fix" due-to="Karl von Randow" due-to-email="">
+        Found and fixed race condition in C DLL that was causing the problem of being
+        able to only register one hotkey at a time.
+      </action>
+      <action dev="mellowaredev@gmail.com" type="fix" due-to="Thomas Beckers" due-to-email="">
+        Fixed "on" methods to be synchronized and added properly.
+      </action>
+      <action dev="mellowaredev@gmail.com" type="add" due-to="Thomas Beckers" due-to-email="">
+        Added isJintellitypeSupported() method which checks the DLL is in the path
+        and the operating System is Windows and its a 32 bit JDK since it will
+        not run on 64 bit JVM.
+      </action>
+    </release>
+    <release version="1.2.1" date="2007-10-05" description="Minor update">
+      <action dev="mellowaredev@gmail.com" type="add" due-to="Usual" due-to-email="usual.smth@gmail.com">
+        Added Javadoc that explains a modifier of 0 means that no modifier is required if you
+        want to have a single key be a hotkey.
+      </action>
+      <action dev="mellowaredev@gmail.com" type="add" due-to="Usual" due-to-email="usual.smth@gmail.com">
+        Added example of just using the PRINT_SCREEN key with no modifiers as a hotkey.
+      </action>
+      <action dev="mellowaredev@gmail.com" type="add">
+        Added more constants to JIntellitypeConstants.java based on MSDN documentation.
+      </action>
+      <action dev="mellowaredev@gmail.com" type="fix">
+        Made JIntellitype singleton thread safe by using double checked pattern.
+      </action>
+    </release>
+    <release version="1.2" date="2007-01-11" description="Minor Features Added">
+      <action dev="mellowaredev@gmail.com" type="add" due-to="Peter Fichtner" due-to-email="fichtner@c2tn.de">
+        Added registerHotKey(int identifier, String modifierAndKeyCode) to allow Strings like "CTRL+A" to be
+        used to register hotkeys for applications that want their users to be able to define hotkeys.
+      </action>
+      <action dev="mellowaredev@gmail.com" type="add">
+        Added checkInstanceAlreadyRunning(String appTitle) to prevent multiple instances
+        of your application from being started if you don't want to. Returns true
+        if an instance with this application title is already running on the system.
+        Useful for developers who only want ONE instance of their app running.
+      </action>
+    </release>
+    <release version="1.1" date="2006-12-19" description="Singleton Now">
+      <action dev="mellowaredev@gmail.com" type="add" due-to="Bertrand Florat" due-to-email="bflorat@sourceforge.net">
+        Changed Jintellitype to a singleton class like JIntellitype.getInstance()
+      </action>
+      <action dev="mellowaredev@gmail.com" type="add" due-to="Bertrand Florat" due-to-email="bflorat@sourceforge.net">
+        Added ability to use Swing constants for ALT, CTRL, SHIFT.
+      </action>
+    </release>
+    <release version="1.0" date="2006-09-20" description="Initial Version">
+      <action dev="mellowaredev@gmail.com" type="add">
+        Initial release of the JIntellitype API.
+      </action>
+    </release>
+
+
+  </body>
+</document>

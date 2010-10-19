@@ -1,0 +1,1 @@
+<% Response.Redirect("http://melloware.com/products/jintellitype/index.html");%>
