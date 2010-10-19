@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Contacts</title>
+    <author email="info.AT.melloware.DOT.com">Emil A Lefkof III</author>
+  </properties>
+
+  <body>
+
+  <section name="Contacts">
+    <p>
+      The preferred way of getting in touch with one of the developers of
+      <strong>JIntellitype</strong> is via the <a href="http://forum.melloware.com/index.php">forums</a>.
+      Please direct any matters of general user support, questions, suggestions, discussions, etc., 
+      to the <a href="http://forum.melloware.com/index.php">forums</a>.
+    </p>
+
+  <subsection name="Developers and Contributors">
+    <p>
+      In special cases, you may try to contact directly one of the
+      <a href="team-list.html">developers or contributors</a>. You
+      can always send request to info@melloware.com also.
+    </p>
+  </subsection>
+
+  </section>
+
+
+</body>
+</document>

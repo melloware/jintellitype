@@ -1,0 +1,35 @@
+<assembly>
+   <id>dist</id>
+   <formats>
+     <format>zip</format>
+   </formats>
+   <fileSets>
+     <fileSet>
+       <directory>target</directory>
+       <outputDirectory></outputDirectory>
+       <includes>
+         <include>*.jar</include>
+       </includes>
+     </fileSet>
+     <fileSet>
+        <directory>src\main</directory>
+        <excludes>
+          <exclude>**/.svn/**</exclude>
+        </excludes>
+     </fileSet>
+     <fileSet>
+        <directory>src\test</directory>
+        <excludes>
+          <exclude>**/.svn/**</exclude>
+        </excludes>
+     </fileSet>
+     <fileSet>
+        <includes>
+         <include>*.dll</include>
+         <include>pom.xml</include>
+         <include>readme.txt</include>
+         <include>license.txt</include>
+       </includes>
+     </fileSet>
+   </fileSets>
+</assembly>
