@@ -9,53 +9,21 @@ This page contains a list of projects currently using JIntellitype.  Contact me 
 = Details =
 Projects using JIntellitype:
 
-[http://melloware.com/products/jukes/index.html Jukes] cross platform music player and organizer.
-        
-        
-[http://jajuk.sourceforge.net JaJuk] cross platform swiss army knife music player including DJ mode and much more!
-        
-        
-[http://www.c2tn.de C2TN] C2TN is the first RSS Reader which integrates completely into your desktop.
-        
-		  
-[http://www.atunes.org/ aTunes] aTunes is a GPL audio player and manager.
-        
-		
-[http://www.topkeys.net Topkeys] emulates the mouse using the keyboard.
-        
-		
-[http://kolovos.wiki.sourceforge.net/MiniGen MiniGen] is a program that can generate text in any Windows-based (tested on XP/Vista) application based on the currently selected text in a non-invasive manner.
-        
-        
-[http://xtrememp.sourceforge.net/ Xtreme Media Player]  is a free cross-platform media player.
-        
-		
-[http://github.com/marnix/mytime/tree/master MyTime] is a simple time tracker, mostly controlled through the tray icon.
-        
-		
-[http://radis.sourceforge.net/ RadiS] is a cool-looking mouse menu that opens upon a global hot-key. Allows sub-menus which will be displayed in an adjacent partly circle.
-        
-		
-[http://jshot.info/ JShot] is a free and multiplatform screen capture and uploader utility which allows you to capture a part of your screen and publish it in one step.
-        
-		
-[http://sourceforge.net/projects/opensoundboard OpenSoundboard] plays sound files (currently only .wav) when the user presses hotkeys.
-        
-		
-[http://clipcomrade.sourceforge.net/ Clipcomrade] - simple and free open source windows clipboard manager tool
-        
-		
-[http://wordoholic.com/ Wordoholic Learner] - a cross-platform language learning tool
-        
-		
-[http://code.google.com/p/hotshots/ Hotshots] - Easy to use screenshot utility for Windows and Linux
-        
-		
-[http://code.google.com/p/g15lastfm/ G15Lastfm] - Last.fm player for G15 gaming keyboard
-        
-		
-[http://code.google.com/p/webapp-workplace/ webapp-workplace] - Web Workspace/Client to provide notifications for different web applications such as gmail, facebook, etc. 
-        
-		
-[http://code.google.com/p/hawkscope/ Hawkscope] - is a productivity tool that allows you to access your hard drive contents quickly via system tray / menubar icon with dynamic pop-up menu. 
+* [http://melloware.com/products/jukes/index.html Jukes] cross platform music player and organizer.
+* [http://jajuk.sourceforge.net JaJuk] cross platform swiss army knife music player including DJ mode and much more!
+* [http://www.c2tn.de C2TN] C2TN is the first RSS Reader which integrates completely into your desktop.	  
+* [http://www.atunes.org/ aTunes] aTunes is a GPL audio player and manager.	
+* [http://www.topkeys.net Topkeys] emulates the mouse using the keyboard.	
+* [http://kolovos.wiki.sourceforge.net/MiniGen MiniGen] is a program that can generate text in any Windows-based (tested on XP/Vista) application based on the currently selected text in a non-invasive manner. 
+* [http://xtrememp.sourceforge.net/ Xtreme Media Player]  is a free cross-platform media player.	
+* [http://github.com/marnix/mytime/tree/master MyTime] is a simple time tracker, mostly controlled through the tray icon.	
+* [http://radis.sourceforge.net/ RadiS] is a cool-looking mouse menu that opens upon a global hot-key. Allows sub-menus which will be displayed in an adjacent partly circle.	
+* [http://jshot.info/ JShot] is a free and multiplatform screen capture and uploader utility which allows you to capture a part of your screen and publish it in one step.	
+* [http://sourceforge.net/projects/opensoundboard OpenSoundboard] plays sound files (currently only .wav) when the user presses hotkeys.	
+* [http://clipcomrade.sourceforge.net/ Clipcomrade] - simple and free open source windows clipboard manager tool	
+* [http://wordoholic.com/ Wordoholic Learner] - a cross-platform language learning tool	
+* [http://code.google.com/p/hotshots/ Hotshots] - Easy to use screenshot utility for Windows and Linux	
+* [http://code.google.com/p/g15lastfm/ G15Lastfm] - Last.fm player for G15 gaming keyboard	
+* [http://code.google.com/p/webapp-workplace/ webapp-workplace] - Web Workspace/Client to provide notifications for different web applications such as gmail, facebook, etc. 	
+* [http://code.google.com/p/hawkscope/ Hawkscope] - is a productivity tool that allows you to access your hard drive contents quickly via system tray / menubar icon with dynamic pop-up menu. 
         
