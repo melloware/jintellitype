@@ -1,5 +1,5 @@
+#summary Projects Using JIntellitype
 #labels Featured
- *Projects Using JIntellitype
 
 = Introduction =
 
