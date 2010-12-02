@@ -91,31 +91,33 @@ public final class JIntellitype implements JIntellitypeConstants {
     * calling.
     */
    private JIntellitype() {
-      // Load JNI library
       try {
-         if (getLibraryLocation() != null) {
-            System.load(getLibraryLocation());
-         } else {
-            String jarPath = "com/melloware/jintellitype/";
-            String tmpDir = System.getProperty("java.io.tmpdir");
-            try {
-               String dll = "JIntellitype.dll";
-               fromJarToFs(jarPath + dll, tmpDir + dll);
-               System.load(tmpDir + dll);
-            } catch (UnsatisfiedLinkError e) {
-               String dll = "JIntellitype64.dll";
-               fromJarToFs(jarPath + dll, tmpDir + dll);
-               System.load(tmpDir + dll);
+         // Load JNI library
+         System.loadLibrary("JIntellitype");
+      } catch (Throwable ex) {
+         try {
+            if (getLibraryLocation() != null) {
+               System.load(getLibraryLocation());
+            } else {
+               String jarPath = "com/melloware/jintellitype/";
+               String tmpDir = System.getProperty("java.io.tmpdir");
+               try {
+                  String dll = "JIntellitype.dll";
+                  fromJarToFs(jarPath + dll, tmpDir + dll);
+                  System.load(tmpDir + dll);
+               } catch (UnsatisfiedLinkError e) {
+                  String dll = "JIntellitype64.dll";
+                  fromJarToFs(jarPath + dll, tmpDir + dll);
+                  System.load(tmpDir + dll);
+               }
             }
+         } catch (Throwable ex2) {
+            throw new JIntellitypeException(
+                     "Could not load JIntellitype.dll from local file system or from inside JAR", ex2);
          }
-         initializeLibrary();
-      } catch (IOException ex) {
-         throw new JIntellitypeException(ex);
-      } catch (UnsatisfiedLinkError ex) {
-         throw new JIntellitypeException(ex);
-      } catch (RuntimeException ex) {
-         throw new JIntellitypeException(ex);
       }
+
+      initializeLibrary();
       this.keycodeMap = getKey2KeycodeMapping();
    }
 

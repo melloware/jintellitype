@@ -4,7 +4,7 @@
   <groupId>com.melloware</groupId>
   <artifactId>jintellitype</artifactId>
   <packaging>jar</packaging>
-  <version>1.3.5</version>
+  <version>1.3.6</version>
   <url>http://www.melloware.com</url>
   <name>JIntellitype</name>
   <description>JNI Java bridge to Microsoft Intellitype commands.</description>

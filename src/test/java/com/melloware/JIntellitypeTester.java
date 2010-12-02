@@ -27,6 +27,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -54,16 +55,16 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
    private static final int ALT_SHIFT_B = 89;
    private static final int CTRL_SHIFT_C = 90;
    private static final int PRINT_SCREEN = 91;
-   private static final int F9 = 92;
+   private static final int F11 = 92;
    private static final int F12 = 93;
    private static final int SEMICOLON = 94;
-   private JButton btnRegisterHotKey = new JButton();
-   private JButton btnUnregisterHotKey = new JButton();
-   private JPanel bottomPanel = new JPanel();
-   private JPanel mainPanel = new JPanel();
-   private JPanel topPanel = new JPanel();
-   private JScrollPane scrollPane = new JScrollPane();
-   private JTextArea textArea = new JTextArea();
+   private final JButton btnRegisterHotKey = new JButton();
+   private final JButton btnUnregisterHotKey = new JButton();
+   private final JPanel bottomPanel = new JPanel();
+   private final JPanel mainPanel = new JPanel();
+   private final JPanel topPanel = new JPanel();
+   private final JScrollPane scrollPane = new JScrollPane();
+   private final JTextArea textArea = new JTextArea();
 
    /**
     * Creates new form.
@@ -78,13 +79,14 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
     * @param args any command line arguments
     */
    public static void main(String[] args) {
+      System.out.println(new File(".").getAbsolutePath());
       // first check to see if an instance of this application is already
       // running, use the name of the window title of this JFrame for checking
       if (JIntellitype.checkInstanceAlreadyRunning("JIntellitype Test Application")) {
          System.exit(1);
       }
-      
-      // next check to make sure JIntellitype DLL can be found and we are on 
+
+      // next check to make sure JIntellitype DLL can be found and we are on
       // a Windows operating System
       if (!JIntellitype.isJIntellitypeSupported()) {
          System.exit(1);
@@ -196,13 +198,14 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
     */
    private void btnRegisterHotKey_actionPerformed(ActionEvent aEvent) {
       // assign the WINDOWS+A key to the unique id 88 for identification
-      JIntellitype.getInstance().registerHotKey(WINDOWS_A, JIntellitype.MOD_WIN, (int) 'A');
-      JIntellitype.getInstance().registerHotKey(ALT_SHIFT_B, JIntellitype.MOD_ALT + JIntellitype.MOD_SHIFT, (int) 'B');
-      JIntellitype.getInstance().registerSwingHotKey(CTRL_SHIFT_C, Event.CTRL_MASK + Event.SHIFT_MASK, (int) 'C');
-      
-      // use a 0 for the modifier if you just want a single keystroke to be a hotkey
+      JIntellitype.getInstance().registerHotKey(WINDOWS_A, JIntellitype.MOD_WIN, 'A');
+      JIntellitype.getInstance().registerHotKey(ALT_SHIFT_B, JIntellitype.MOD_ALT + JIntellitype.MOD_SHIFT, 'B');
+      JIntellitype.getInstance().registerSwingHotKey(CTRL_SHIFT_C, Event.CTRL_MASK + Event.SHIFT_MASK, 'C');
+
+      // use a 0 for the modifier if you just want a single keystroke to be a
+      // hotkey
       JIntellitype.getInstance().registerHotKey(PRINT_SCREEN, 0, 44);
-      JIntellitype.getInstance().registerHotKey(F9, 0, 120);
+      JIntellitype.getInstance().registerHotKey(F11, "F11");
       JIntellitype.getInstance().registerHotKey(F12, JIntellitype.MOD_ALT, 123);
       JIntellitype.getInstance().registerHotKey(SEMICOLON, 0, 186);
       // clear the text area
@@ -227,7 +230,7 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
       JIntellitype.getInstance().unregisterHotKey(ALT_SHIFT_B);
       JIntellitype.getInstance().unregisterHotKey(CTRL_SHIFT_C);
       JIntellitype.getInstance().unregisterHotKey(PRINT_SCREEN);
-      JIntellitype.getInstance().unregisterHotKey(F9);
+      JIntellitype.getInstance().unregisterHotKey(F11);
       JIntellitype.getInstance().unregisterHotKey(F12);
       JIntellitype.getInstance().unregisterHotKey(SEMICOLON);
       output("UnregisterHotKey WINDOWS+A");
@@ -268,6 +271,7 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
       mainPanel.add(bottomPanel, BorderLayout.CENTER);
 
       this.addWindowListener(new java.awt.event.WindowAdapter() {
+         @Override
          public void windowClosing(java.awt.event.WindowEvent evt) {
             // don't forget to clean up any resources before close
             JIntellitype.getInstance().cleanUp();
@@ -282,7 +286,6 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
 
    /**
     * Initialize the JInitellitype library making sure the DLL is located.
-    * 
     */
    public void initJIntellitype() {
       try {
