@@ -1,4 +1,5 @@
 #summary Compiling the Dev C++ Code
+#labels Featured
 
 = Introduction =
 
