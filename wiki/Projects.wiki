@@ -25,5 +25,6 @@ Projects using JIntellitype:
  * [http://code.google.com/p/hotshots/ Hotshots] - Easy to use screenshot utility for Windows and Linux	
  * [http://code.google.com/p/g15lastfm/ G15Lastfm] - Last.fm player for G15 gaming keyboard	
  * [http://code.google.com/p/webapp-workplace/ webapp-workplace] - Web Workspace/Client to provide notifications for different web applications such as gmail, facebook, etc. 	
- * [http://code.google.com/p/hawkscope/ Hawkscope] - is a productivity tool that allows you to access your hard drive contents quickly via system tray / menubar icon with dynamic pop-up menu. 
+ * [http://code.google.com/p/hawkscope/ Hawkscope] - is a productivity tool that allows you to access your hard drive contents quickly via system tray / menubar icon with dynamic pop-up menu.
+ * [http://sikuli.org/ Project Sikuli] - is a visual technology to automate and test graphical user interfaces (GUI) using images (screenshots). Sikuli includes Sikuli Script, a visual scripting API for Jython, and Sikuli IDE, an integrated development environment for writing visual scripts with screenshots easily.
         
