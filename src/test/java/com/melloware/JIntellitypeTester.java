@@ -41,8 +41,7 @@ import com.melloware.jintellitype.IntellitypeListener;
 import com.melloware.jintellitype.JIntellitype;
 
 /**
- * Swing based test application to test all the functions of the JIntellitype
- * library.
+ * Swing based test application to test all the functions of the JIntellitype library.
  * <p>
  * Copyright (c) 2006 Melloware, Inc. <http://www.melloware.com>
  * @author Emil A. Lefkof III <elefkof@ksmpartners.com>
@@ -58,6 +57,7 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
    private static final int F11 = 92;
    private static final int F12 = 93;
    private static final int SEMICOLON = 94;
+   private static final int TICK = 95;
    private final JButton btnRegisterHotKey = new JButton();
    private final JButton btnUnregisterHotKey = new JButton();
    private final JPanel bottomPanel = new JPanel();
@@ -208,6 +208,7 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
       JIntellitype.getInstance().registerHotKey(F11, "F11");
       JIntellitype.getInstance().registerHotKey(F12, JIntellitype.MOD_ALT, 123);
       JIntellitype.getInstance().registerHotKey(SEMICOLON, 0, 186);
+      JIntellitype.getInstance().registerHotKey(TICK, 0, 192);
       // clear the text area
       textArea.setText("");
       output("RegisterHotKey WINDOWS+A was assigned uniqueID 88");
