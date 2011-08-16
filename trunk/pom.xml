@@ -5,6 +5,7 @@
 		<artifactId>oss-parent</artifactId>
 		<version>7</version>
 	</parent>
+	<!-- mvn clean javadoc:jar source:jar deploy -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.melloware</groupId>
 	<artifactId>jintellitype</artifactId>
@@ -144,6 +145,14 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<releaseProfiles>release-sign-artifacts</releaseProfiles>
+					<goals>clean javadoc:jar source:jar deploy</goals>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
