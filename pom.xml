@@ -1,11 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
 		<version>7</version>
 	</parent>
 	<!-- mvn clean javadoc:jar source:jar deploy -->
+	<!-- mvn release:prepare -Dusername=[username] -Dpassword=[password]  -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.melloware</groupId>
 	<artifactId>jintellitype</artifactId>
@@ -23,9 +23,9 @@
 	</properties>
 	<inceptionYear>1999</inceptionYear>
 	<scm>
-		<connection>https://jintellitype.googlecode.com/svn/trunk/</connection>
-		<developerConnection>scm:svn:https://jintellitype.googlecode.com/svn/trunk/</developerConnection>
-		<url>scm:svn:https://jintellitype.googlecode.com/svn/trunk/</url>
+		<connection>https://jintellitype.googlecode.com/svn/tags/1.3.7</connection>
+		<developerConnection>scm:svn:https://jintellitype.googlecode.com/svn/tags/1.3.7</developerConnection>
+		<url>scm:svn:https://jintellitype.googlecode.com/svn/tags/1.3.7</url>
 	</scm>
 	<licenses>
 		<license>
@@ -72,7 +72,7 @@
 		</contributor>
 		<contributor>
 			<name>Thomas Beckers</name>
-			<email/>
+			<email />
 			<url>http://www.atunes.org/</url>
 			<organization>aTunes Team</organization>
 			<organizationUrl>http://www.atunes.org/</organizationUrl>
@@ -82,7 +82,7 @@
 		</contributor>
 		<contributor>
 			<name>Karl von Randow</name>
-			<email/>
+			<email />
 			<url>http://xk72.com/</url>
 			<organization>XK72</organization>
 			<organizationUrl>http://xk72.com/</organizationUrl>
@@ -92,7 +92,7 @@
 		</contributor>
 		<contributor>
 			<name>Johannes Frank</name>
-			<email/>
+			<email />
 			<url>http://radis.sf.net/</url>
 			<organization>RadiS</organization>
 			<organizationUrl>http://radis.sf.net/</organizationUrl>
@@ -102,7 +102,7 @@
 		</contributor>
 		<contributor>
 			<name>Wordoholic</name>
-			<email/>
+			<email />
 			<url>http://wordoholic.com/</url>
 			<organization>Wordoholic</organization>
 			<organizationUrl>http://wordoholic.com/</organizationUrl>
@@ -112,20 +112,20 @@
 		</contributor>
 		<contributor>
 			<name>Zeroflag</name>
-			<email/>
-			<url/>
+			<email />
+			<url />
 			<organization>ZeroFlag</organization>
-			<organizationUrl/>
+			<organizationUrl />
 			<roles>
 				<role>x64 DLL Contributor</role>
 			</roles>
 		</contributor>
 		<contributor>
 			<name>Lars</name>
-			<email/>
-			<url/>
+			<email />
+			<url />
 			<organization>Hamburg</organization>
-			<organizationUrl/>
+			<organizationUrl />
 			<roles>
 				<role>Strings for Register Hotkeys</role>
 			</roles>
