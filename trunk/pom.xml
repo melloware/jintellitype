@@ -23,9 +23,9 @@
 	</properties>
 	<inceptionYear>1999</inceptionYear>
 	<scm>
-		<connection>https://jintellitype.googlecode.com/svn/tags/jintellitype-1.3.7</connection>
-		<developerConnection>scm:svn:https://jintellitype.googlecode.com/svn/tags/jintellitype-1.3.7</developerConnection>
-		<url>scm:svn:https://jintellitype.googlecode.com/svn/tags/jintellitype-1.3.7</url>
+		<connection>scm:svn:https://jintellitype.googlecode.com/svn/trunk</connection>
+		<developerConnection>scm:svn:https://jintellitype.googlecode.com/svn/trunk</developerConnection>
+		<url>scm:svn:https://jintellitype.googlecode.com/svn/trunk</url>
 	</scm>
 	<licenses>
 		<license>
