@@ -1,0 +1,46 @@
+# Project: JIntellitype
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = ../../../target/JIntellitype_private.res
+OBJ  = ../../../target/JIntellitypeThread.o ../../../target/JIntellitype.o ../../../target/JIntellitypeHandler.o ../../../target/StdAfx.o $(RES)
+LINKOBJ  = ../../../target/JIntellitypeThread.o ../../../target/JIntellitype.o ../../../target/JIntellitypeHandler.o ../../../target/StdAfx.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32 --no-export-all-symbols --add-stdcall-alias  -s 
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = ../../../../jintellitype/JIntellitype.dll
+CXXFLAGS = $(CXXINCS) -D__GNUWIN32__ -W -DWIN32 -DNDEBUG -D_WINDOWS -D_MBCS -D_USRDLL   -fexpensive-optimizations -O3
+CFLAGS = $(INCS) -D__GNUWIN32__ -W -DWIN32 -DNDEBUG -D_WINDOWS -D_MBCS -D_USRDLL -DBUILDING_DLL=1   -fexpensive-optimizations -O3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before ../../../../jintellitype/JIntellitype.dll all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+DLLWRAP=dllwrap.exe
+DEFFILE=../../../../jintellitype/libJIntellitype.def
+STATICLIB=../../../../jintellitype/libJIntellitype.a
+
+$(BIN): $(LINKOBJ)
+	$(DLLWRAP) --output-def $(DEFFILE) --driver-name c++ --implib $(STATICLIB) $(LINKOBJ) $(LIBS) -o $(BIN)
+
+../../../target/JIntellitypeThread.o: JIntellitypeThread.cpp
+	$(CPP) -c JIntellitypeThread.cpp -o ../../../target/JIntellitypeThread.o $(CXXFLAGS)
+
+../../../target/JIntellitype.o: JIntellitype.cpp
+	$(CPP) -c JIntellitype.cpp -o ../../../target/JIntellitype.o $(CXXFLAGS)
+
+../../../target/JIntellitypeHandler.o: JIntellitypeHandler.cpp
+	$(CPP) -c JIntellitypeHandler.cpp -o ../../../target/JIntellitypeHandler.o $(CXXFLAGS)
+
+../../../target/StdAfx.o: StdAfx.cpp
+	$(CPP) -c StdAfx.cpp -o ../../../target/StdAfx.o $(CXXFLAGS)
+
+../../../target/JIntellitype_private.res: JIntellitype_private.rc 
+	$(WINDRES) -i JIntellitype_private.rc --input-format=rc -o ../../../target/JIntellitype_private.res -O coff 
