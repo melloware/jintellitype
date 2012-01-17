@@ -73,6 +73,9 @@
           <a href="http://www.topkeys.net">Topkeys</a> emulates the mouse using the keyboard.
         </p>
 		<p>
+          <a href="http://code.google.com/p/google-translate-desktop/">Google Translate Desktop</a> is a free unofficial Java desktop client based on Google Translate service.
+        </p>
+		<p>
           <a href="http://kolovos.wiki.sourceforge.net/MiniGen">MiniGen</a> is a program that can generate text in any Windows-based (tested on XP/Vista) application based on the currently selected text in a non-invasive manner.
         </p>
         <p>
@@ -88,7 +91,7 @@
           <a href="http://jshot.info/">JShot</a> is a free and multiplatform screen capture and uploader utility which allows you to capture a part of your screen and publish it in one step.
         </p>
 		<p>
-          <a href="http://sourceforge.net/projects/opensoundboard">OpenSoundboard</a> plays sound files (currently only .wav) when the user presses hotkeys.
+          <a href="http://sourceforge.net/projects/opensoundboard">OpenSoundboard</a> plays sound files (.wav, .mp3) when the user presses hotkeys.
         </p>
 		<p>
           <a href="http://clipcomrade.sourceforge.net/">Clipcomrade</a> - simple and free open source windows clipboard manager tool
