@@ -28,14 +28,16 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.swing.SwingUtilities;
 
 /**
- * JIntellitype A Java Implementation for using the Windows API Intellitype commands and the RegisterHotKey and
- * UnRegisterHotkey API calls for globally responding to key events. Intellitype are commands that are using for Play,
+ * JIntellitype A Java Implementation for using the Windows API Intellitype
+ * commands and the RegisterHotKey and UnRegisterHotkey API calls for globally
+ * responding to key events. Intellitype are commands that are using for Play,
  * Stop, Next on Media keyboards or some laptops that have those special keys.
  * <p>
- * JIntellitype class that is used to call Windows API calls using the JIntellitype.dll.
+ * JIntellitype class that is used to call Windows API calls using the
+ * JIntellitype.dll.
  * <p>
- * This file comes with native code in JINTELLITYPE.DLL The DLL should go in C:/WINDOWS/SYSTEM or in your current
- * directory
+ * This file comes with native code in JINTELLITYPE.DLL The DLL should go in
+ * C:/WINDOWS/SYSTEM or in your current directory
  * <p>
  * <p>
  * Copyright (c) 1999-2008 Melloware, Inc. <http://www.melloware.com>
@@ -62,12 +64,14 @@ public final class JIntellitype implements JIntellitypeConstants {
    /**
     * Listeners collection for Hotkey events
     */
-   private final List<HotkeyListener> hotkeyListeners = Collections.synchronizedList(new CopyOnWriteArrayList<HotkeyListener>());
+   private final List<HotkeyListener> hotkeyListeners = Collections
+            .synchronizedList(new CopyOnWriteArrayList<HotkeyListener>());
 
    /**
     * Listeners collection for Hotkey events
     */
-   private final List<IntellitypeListener> intellitypeListeners = Collections.synchronizedList(new CopyOnWriteArrayList<IntellitypeListener>());
+   private final List<IntellitypeListener> intellitypeListeners = Collections
+            .synchronizedList(new CopyOnWriteArrayList<IntellitypeListener>());
 
    /**
     * Handler is used by JNI code to keep different JVM instances separate
@@ -82,7 +86,8 @@ public final class JIntellitype implements JIntellitypeConstants {
    private final HashMap<String, Integer> keycodeMap;
 
    /**
-    * Private Constructor to prevent instantiation. Initialize the library for calling.
+    * Private Constructor to prevent instantiation. Initialize the library for
+    * calling.
     */
    private JIntellitype() {
       try {
@@ -106,7 +111,8 @@ public final class JIntellitype implements JIntellitypeConstants {
                }
             }
          } catch (Throwable ex2) {
-            throw new JIntellitypeException("Could not load JIntellitype.dll from local file system or from inside JAR", ex2);
+            throw new JIntellitypeException(
+                     "Could not load JIntellitype.dll from local file system or from inside JAR", ex2);
          }
       }
 
@@ -152,10 +158,12 @@ public final class JIntellitype implements JIntellitypeConstants {
    /**
     * Gets the singleton instance of the JIntellitype object.
     * <p>
-    * But the possibility of creation of more instance is only before the instance is created. Since all code defined
-    * inside getInstance method is in the synchronized block, even the subsequent requests will also come and wait in
-    * the synchronized block. This is a performance issue. The same can be solved using double-checked lock. Following
-    * is the implementation of Singleton with lazy initialization and double-checked lock.
+    * But the possibility of creation of more instance is only before the
+    * instance is created. Since all code defined inside getInstance method is
+    * in the synchronized block, even the subsequent requests will also come and
+    * wait in the synchronized block. This is a performance issue. The same can
+    * be solved using double-checked lock. Following is the implementation of
+    * Singleton with lazy initialization and double-checked lock.
     * <p>
     * @return an instance of JIntellitype class
     */
@@ -203,11 +211,13 @@ public final class JIntellitype implements JIntellitypeConstants {
    }
 
    /**
-    * Registers a Hotkey with windows. This combination will be responded to by all registered HotKeyListeners. Uses the
-    * JIntellitypeConstants for MOD, ALT, CTRL, and WINDOWS keys.
+    * Registers a Hotkey with windows. This combination will be responded to by
+    * all registered HotKeyListeners. Uses the JIntellitypeConstants for MOD,
+    * ALT, CTRL, and WINDOWS keys.
     * <p>
     * @param identifier a unique identifier for this key combination
-    * @param modifier MOD_SHIFT, MOD_ALT, MOD_CONTROL, MOD_WIN from JIntellitypeConstants, or 0 if no modifier needed
+    * @param modifier MOD_SHIFT, MOD_ALT, MOD_CONTROL, MOD_WIN from
+    *           JIntellitypeConstants, or 0 if no modifier needed
     * @param keycode the key to respond to in Ascii integer, 65 for A
     */
    public void registerHotKey(int identifier, int modifier, int keycode) {
@@ -225,11 +235,13 @@ public final class JIntellitype implements JIntellitypeConstants {
    }
 
    /**
-    * Registers a Hotkey with windows. This combination will be responded to by all registered HotKeyListeners. Use the
-    * Swing InputEvent constants from java.awt.InputEvent.
+    * Registers a Hotkey with windows. This combination will be responded to by
+    * all registered HotKeyListeners. Use the Swing InputEvent constants from
+    * java.awt.InputEvent.
     * <p>
     * @param identifier a unique identifier for this key combination
-    * @param modifier InputEvent.SHIFT_MASK, InputEvent.ALT_MASK, InputEvent.CTRL_MASK, or 0 if no modifier needed
+    * @param modifier InputEvent.SHIFT_MASK, InputEvent.ALT_MASK,
+    *           InputEvent.CTRL_MASK, or 0 if no modifier needed
     * @param keycode the key to respond to in Ascii integer, 65 for A
     */
    public void registerSwingHotKey(int identifier, int modifier, int keycode) {
@@ -243,11 +255,13 @@ public final class JIntellitype implements JIntellitypeConstants {
    }
 
    /**
-    * Registers a Hotkey with windows. This combination will be responded to by all registered HotKeyListeners. Use the
-    * identifiers CTRL, SHIFT, ALT and/or WIN.
+    * Registers a Hotkey with windows. This combination will be responded to by
+    * all registered HotKeyListeners. Use the identifiers CTRL, SHIFT, ALT
+    * and/or WIN.
     * <p>
     * @param identifier a unique identifier for this key combination
-    * @param modifierAndKeyCode String with modifiers separated by + and keycode (e.g. CTRL+SHIFT+A)
+    * @param modifierAndKeyCode String with modifiers separated by + and keycode
+    *           (e.g. CTRL+SHIFT+A)
     * @see #registerHotKey(int, int, int)
     * @see #registerSwingHotKey(int, int, int)
     */
@@ -287,7 +301,8 @@ public final class JIntellitype implements JIntellitypeConstants {
    }
 
    /**
-    * Unregisters a previously registered Hotkey identified by its unique identifier.
+    * Unregisters a previously registered Hotkey identified by its unique
+    * identifier.
     * <p>
     * @param identifier the unique identifer of this Hotkey
     */
@@ -312,8 +327,9 @@ public final class JIntellitype implements JIntellitypeConstants {
    }
 
    /**
-    * Checks to make sure the OS is a Windows flavor and that the JIntellitype DLL is found in the path and the JDK is
-    * 32 bit not 64 bit. The DLL currently only supports 32 bit JDK.
+    * Checks to make sure the OS is a Windows flavor and that the JIntellitype
+    * DLL is found in the path and the JDK is 32 bit not 64 bit. The DLL
+    * currently only supports 32 bit JDK.
     * <p>
     * @return true if Jintellitype may be used, false if not
     */
@@ -325,7 +341,8 @@ public final class JIntellitype implements JIntellitypeConstants {
          os = System.getProperty("os.name").toLowerCase();
       } catch (SecurityException ex) {
          // we are not allowed to look at this property
-         System.err.println("Caught a SecurityException reading the system property " + "'os.name'; the SystemUtils property value will default to null.");
+         System.err.println("Caught a SecurityException reading the system property "
+                  + "'os.name'; the SystemUtils property value will default to null.");
       }
 
       // only works on Windows OS currently
@@ -397,39 +414,40 @@ public final class JIntellitype implements JIntellitypeConstants {
    }
 
    /**
-    * Swing modifier value to Jintellipad conversion. If no conversion needed just return the original value. This lets
-    * users pass either the original JIntellitype constants or Swing InputEvent constants.
+    * Swing modifier value to Jintellipad conversion. If no conversion needed
+    * just return the original value. This lets users pass either the original
+    * JIntellitype constants or Swing InputEvent constants.
     * <p>
     * @param swingKeystrokeModifier the Swing KeystrokeModifier to check
     * @return Jintellitype the JIntellitype modifier value
     */
    protected static int swingToIntelliType(int swingKeystrokeModifier) {
       int mask = 0;
-      if ((swingKeystrokeModifier & InputEvent.SHIFT_MASK) == InputEvent.SHIFT_MASK) {
-         mask &= JIntellitype.MOD_SHIFT;
+      if ((swingKeystrokeModifier & InputEvent.SHIFT_MASK) == InputEvent.SHIFT_MASK
+               || (swingKeystrokeModifier & InputEvent.SHIFT_DOWN_MASK) == InputEvent.SHIFT_DOWN_MASK) {
+         mask |= JIntellitypeConstants.MOD_SHIFT;
       }
-      if ((swingKeystrokeModifier & InputEvent.ALT_MASK) == InputEvent.ALT_MASK) {
-         mask &= JIntellitype.MOD_ALT;
+      if ((swingKeystrokeModifier & InputEvent.ALT_MASK) == InputEvent.ALT_MASK
+               || (swingKeystrokeModifier & InputEvent.ALT_DOWN_MASK) == InputEvent.ALT_DOWN_MASK) {
+         mask |= JIntellitypeConstants.MOD_ALT;
       }
-      if ((swingKeystrokeModifier & InputEvent.CTRL_MASK) == InputEvent.CTRL_MASK) {
-         mask &= JIntellitype.MOD_CONTROL;
+      if ((swingKeystrokeModifier & InputEvent.CTRL_MASK) == InputEvent.CTRL_MASK
+               || (swingKeystrokeModifier & InputEvent.CTRL_DOWN_MASK) == InputEvent.CTRL_DOWN_MASK) {
+         mask |= JIntellitypeConstants.MOD_CONTROL;
       }
-      if ((swingKeystrokeModifier & InputEvent.SHIFT_DOWN_MASK) == InputEvent.SHIFT_DOWN_MASK) {
-         mask &= JIntellitype.MOD_SHIFT;
+      if ((swingKeystrokeModifier & InputEvent.META_MASK) == InputEvent.META_MASK
+               || (swingKeystrokeModifier & InputEvent.META_DOWN_MASK) == InputEvent.META_DOWN_MASK) {
+         mask |= JIntellitypeConstants.MOD_WIN;
       }
-      if ((swingKeystrokeModifier & InputEvent.ALT_DOWN_MASK) == InputEvent.ALT_DOWN_MASK) {
-         mask &= JIntellitype.MOD_ALT;
-      }
-      if ((swingKeystrokeModifier & InputEvent.CTRL_DOWN_MASK) == InputEvent.CTRL_DOWN_MASK) {
-         mask &= JIntellitype.MOD_CONTROL;
-      }
+
       return mask;
    }
 
    /**
-    * Puts all constants from {@link java.awt.event.KeyEvent} in a keycodeMap. The key is the lower case form of it.
-    * @return Map containing key->keycode mapping DOCU Now enables the user to use all keys specified here instead of
-    *         just [A-Z],[0-9] as before
+    * Puts all constants from {@link java.awt.event.KeyEvent} in a keycodeMap.
+    * The key is the lower case form of it.
+    * @return Map containing key->keycode mapping DOCU Now enables the user to
+    *         use all keys specified here instead of just [A-Z],[0-9] as before
     */
    private HashMap<String, Integer> getKey2KeycodeMapping() {
       HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -636,8 +654,9 @@ public final class JIntellitype implements JIntellitypeConstants {
    private synchronized native void unregHotKey(int identifier) throws UnsatisfiedLinkError;
 
    /**
-    * Checks if there's an instance with hidden window title = appName running Can be used to detect that another
-    * instance of your app is already running (so exit..)
+    * Checks if there's an instance with hidden window title = appName running
+    * Can be used to detect that another instance of your app is already running
+    * (so exit..)
     * <p>
     * @param appName = the title of the hidden window to search for
     */
