@@ -384,6 +384,17 @@ public final class JIntellitype implements JIntellitypeConstants {
    }
 
    /**
+    * Sets the libraryLocation of the DLL using a File object.
+    * <p>
+    * @param libraryFile the java.io.File representing the DLL
+    */
+   public static void setLibraryLocation(File libraryFile) {
+      if (!libraryFile.isAbsolute()) {
+         JIntellitype.libraryLocation = libraryFile.getAbsolutePath();
+      }
+   }
+
+   /**
     * Notifies all listeners that Hotkey was pressed.
     * <p>
     * @param identifier the unique identifier received
