@@ -1,0 +1,149 @@
+[Project]
+FileName=JIntellitype.dev
+Name=JIntellitype
+Ver=1
+IsCpp=1
+Type=3
+Compiler=-D__GNUWIN32__ -W -DWIN32 -DNDEBUG -D_WINDOWS -D_MBCS -D_USRDLL -DBUILDING_DLL=1_@@_
+CppCompiler=-D__GNUWIN32__ -W -DWIN32 -DNDEBUG -D_WINDOWS -D_MBCS -D_USRDLL_@@_
+Includes=c:\java\jdk1.2.2\include;c:\java\jdk1.2.2\include\win32
+Linker=-lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32 --no-export-all-symbols --add-stdcall-alias_@@_
+Libs=
+UnitCount=8
+Folders="Header Files","Resource Files","Source Files"
+ObjFiles=
+PrivateResource=JIntellitype_private.rc
+ResourceIncludes=
+MakeIncludes=
+Icon=
+ExeOutput=..\..\..\..\jintellitype
+ObjectOutput=..\..\..\target
+OverrideOutput=0
+OverrideOutputName=JIntellitype.dll
+HostApplication=
+CommandLine=
+UseCustomMakefile=0
+CustomMakefile=
+IncludeVersionInfo=1
+SupportXPThemes=0
+CompilerSet=0
+CompilerSettings=0000000001001000000100
+
+[Unit1]
+FileName=JIntellitypeThread.cpp
+Folder="Source Files"
+Compile=1
+CompileCpp=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
+FileName=JIntellitype.cpp
+Folder="Source Files"
+Compile=1
+CompileCpp=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit3]
+FileName=JIntellitypeHandler.cpp
+Folder="Source Files"
+Compile=1
+CompileCpp=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=JIntellitypeHandler.h
+Folder="Header Files"
+Compile=1
+CompileCpp=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=StdAfx.h
+Folder="Header Files"
+Compile=1
+CompileCpp=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit8]
+FileName=com_melloware_jintellitype_JIntellitype.h
+Folder=Header Files
+Compile=1
+CompileCpp=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[VersionInfo]
+Major=1
+Minor=0
+Release=0
+Build=465
+LanguageID=1033
+CharsetID=1252
+CompanyName=Melloware Inc (www.melloware.com)
+FileVersion=1.0
+FileDescription=Java JNI bridge to MS Intellitype commands
+InternalName=
+LegalCopyright=Copyright 2006 Melloware Inc
+LegalTrademarks=Copyright 2006 Melloware Inc
+OriginalFilename=
+ProductName=JIntellitype
+ProductVersion=1.0
+AutoIncBuildNr=1
+
+[Unit11]
+FileName=com_melloware_jintellitype_JIntellitype.h
+CompileCpp=1
+Folder=Header Files
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit10]
+FileName=com_melloware_jintellitype_JIntellitype.h
+CompileCpp=1
+Folder=Header Files
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=StdAfx.cpp
+CompileCpp=1
+Folder="Source Files"
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=JIntellitypeThread.h
+CompileCpp=1
+Folder="Header Files"
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+

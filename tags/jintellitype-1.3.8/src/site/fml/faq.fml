@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<faqs title="Frequently Asked Questions">
+
+  <part id="general">
+    <title>General</title>
+
+    <faq id="what-is-jintellitype">
+      <question>
+        What is <strong>JIntellitype</strong>?
+      </question>
+      <answer>
+        <strong>JIntellitype</strong> is a Java API for Windows that allows you to
+        register global hotkeys and listen for Microsft Intellitype commands.
+      </answer>
+    </faq>
+
+    <faq id="on-which-platform">
+      <question>
+        On which platform does it run?
+      </question>
+      <answer>
+        Since <strong>JIntellitype</strong> uses Windows specific calls it will
+        only work on Windows.  Windows 2000 or higher recommended.   For a Linux
+		version see <a href="http://sourceforge.net/projects/jxgrabkey/">JxGrabKey</a> project on Sourceforge.
+      </answer>
+    </faq>
+
+	<faq id="x64-jdk">
+      <question>
+        Does it run on x64 JDK or JRE's?
+      </question>
+      <answer>
+        Starting with 1.3.3 JINtellitype comes with a 64 bit DLL.   To use it Simply rename the DLL to
+		JIntellitype.dll or use the Jintellitype.setLibraryLocation(''); function to set the path to JIntellitype64.dll.		
+      </answer>
+    </faq>
+
+    <faq id="where-get-help">
+      <question>
+        Where do I get help on <strong>JIntellitype</strong>?
+      </question>
+      <answer>
+          This FAQ answers some frequent questions already, please read the
+          it thoroughly.
+        <p></p>
+          If these resources don't help you with your problem,
+          or if you think that you found a bug that is not yet documented,
+          you should <a href="contacts.html">contact</a> us.
+      </answer>
+    </faq>
+
+    <faq id="question-not-addressed">
+      <question>
+        I have a question that is not addressed here.
+        Where can I ask?
+      </question>
+      <answer>
+         See our <a href="contacts.html">Contacts</a> page.
+      </answer>
+    </faq>
+
+  </part>
+  
+  <part id="problems">
+    <title>Problems</title>
+
+    <faq id="not-getting-intellitype-messages">
+      <question>
+        I am pressing my special Intellitype keys on my keyboard but nothing is happening?
+      </question>
+      <answer>
+        First, make sure you have followed instructions for using JIntellitype properly. Next,
+        make sure you do not have Microsft Intellitype drivers installed.  The Microsoft software
+        intercepts the messages before they get to JIntellitype and "eats" them.  You can tell if
+        you are running Microsoft Keyboard software by opening Task Manager and looking for the
+        process name "itype.exe".
+      </answer>
+    </faq>
+    
+    <faq id="two-instances">
+      <question>
+        I am using Jintellitype.checkInstanceAlreadyRunning("MyApp") but it is allowing me to open
+        my application more than once when I am expecting it not to?
+      </question>
+      <answer>
+        Make sure that "MyApp" is the getTitle() of the main JFrame of your application.
+        JIntellitype checks by Window title name.
+      </answer>
+    </faq>
+
+  </part>
+
+  <part id="development">
+    <title>Development</title>
+
+    <faq id="can-i-contribute">
+      <question>
+        Can I contribute?
+      </question>
+      <answer>
+        Yes, please! Check out the <a href="contacts.html">contact</a> page and contact us!
+      </answer>
+    </faq>
+
+    <faq id="i-found-a-bug">
+      <question>
+        I think I found a bug in <strong>JIntellitype</strong>.
+        What should I do?
+      </question>
+      <answer>
+        You should post it to the <a href="http://forum.melloware.com/index.php">forums</a> to
+        make sure it is documented.  
+      </answer>
+    </faq>
+
+    <faq id="when-will-feature">
+      <question>
+        When will feature XYZ be implemented?
+      </question>
+      <answer>
+        Depends. If it is something you really sorely need, you could (politely)
+        try to exert some pressure on us. You can also try to pay us.
+        Or try to implement your feature yourself and send us some patches.
+        In any case, you should <a href="contacts.html">contact</a> us about your problem.
+      </answer>
+    </faq>
+
+  </part>
+
+</faqs>

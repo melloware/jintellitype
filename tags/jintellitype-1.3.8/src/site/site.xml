@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${project.name}">
+  <bannerLeft>
+    <src>http://melloware.com/images/header.jpg</src>
+    <href>http://melloware.com/</href>
+  </bannerLeft>
+  <bannerRight>
+    <src>./images/jintellitype-banner.png</src>
+    <href>http://melloware.com/products/jintellitype/</href>
+  </bannerRight>
+  
+
+  <skin>
+    <groupId>com.melloware</groupId>
+    <artifactId>melloware-skin</artifactId>
+    <version>1.0</version>
+  </skin>
+
+  
+  <publishDate format="dd MMM yyyy" />
+  
+  <poweredBy>
+     <logo name="Paypal Donation" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=info%40melloware%2ecom&amp;item_name=JIntellitype%20Donation&amp;item_number=5&amp;no_shipping=0&amp;no_note=1&amp;tax=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8" img="./images/paypal.gif"/>
+     <logo name="Built with Maven 2"  href="http://maven.apache.org" img="http://maven.apache.org/images/logos/maven-feather.png"/>
+  </poweredBy>  
+
+  <body>
+    <links>
+      <item href="http://www.melloware.com/" name="Melloware"/>
+      <item href="http://forum.melloware.com/index.php" name="Forums"/>
+    </links>
+    
+    <head>
+      <meta name="keywords" content="Intellitype, Melloware, JIntellitype, Intelliremote, Java, Jukebox, cross, platform, Java Intellitype, RegisterHotKey, UnregisterHotKey, global, Hotkey"/>
+      <link rel="icon" href="http://www.melloware.com/products/jintellitype/favicon.ico"/>
+      <link rel="shortcut icon" href="http://www.melloware.com/products/jintellitype/favicon.ico"/>
+    </head>
+    
+    <menu name="${project.name}">
+      <item name="Introduction"                   href="/index.html" />
+      <item name="Quick Start"                    href="/quick-start.html" />
+	  <item name="Compiling DLL"                  href="/dev-cpp.html" />
+      <item name="Release Notes"                  href="/changes-report.html" />
+      <item name="FAQ"                            href="/faq.html" />
+      <item name="Download"                       href="http://melloware.com/download/" />
+    </menu>
+    
+    <menu name="Support">
+       <item name="Contact Us"        href="/contacts.html" />
+       <item name="Forums"            href="http://forum.melloware.com/index.php" />
+       <item name="Donate"            href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=info%40melloware%2ecom&amp;item_name=JIntellitype%20Donation&amp;item_number=5&amp;no_shipping=0&amp;no_note=1&amp;tax=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8" />
+    </menu>
+    
+    <menu name="Documentation" ref="reports"/>
+  </body>
+</project>
