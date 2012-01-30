@@ -1,1 +1,1 @@
-mvn release:prepare -Dresume=false -Dusername=mellowaredev@gmail.com -Dpassword=GOOGLECODEPASSWORD
+mvn release:prepare -Dresume=false -Dusername=GOOGLECODEEMAIL -Dpassword=GOOGLECODEPASSWORD
