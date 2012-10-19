@@ -19,7 +19,7 @@ Projects using JIntellitype:
  * [http://github.com/marnix/mytime/tree/master MyTime] is a simple time tracker, mostly controlled through the tray icon.	
  * [http://radis.sourceforge.net/ RadiS] is a cool-looking mouse menu that opens upon a global hot-key. Allows sub-menus which will be displayed in an adjacent partly circle.	
  * [http://jshot.info/ JShot] is a free and multiplatform screen capture and uploader utility which allows you to capture a part of your screen and publish it in one step.	
- * [http://sourceforge.net/projects/opensoundboard OpenSoundboard] plays sound files (currently only .wav) when the user presses hotkeys.	
+ * [http://sourceforge.net/projects/opensoundboard OpenSoundboard] plays sound files (mp3, wave) when the user presses hotkeys.	
  * [http://clipcomrade.sourceforge.net/ Clipcomrade] - simple and free open source windows clipboard manager tool	
  * [http://wordoholic.com/ Wordoholic Learner] - a cross-platform language learning tool	
  * [http://code.google.com/p/hotshots/ Hotshots] - Easy to use screenshot utility for Windows and Linux	
