@@ -331,7 +331,7 @@ public final class JIntellitype implements JIntellitypeConstants {
 
    /**
     * Checks to make sure the OS is a Windows flavor and that the JIntellitype
-    * DLL is found in the path.
+    * DLL is found in the path. 32 and 64 bit DLL's now supported!
     * <p>
     * @return true if Jintellitype may be used, false if not
     */
