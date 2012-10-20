@@ -93,7 +93,7 @@ public final class JIntellitype implements JIntellitypeConstants {
       try {
          // Load JNI library
          System.loadLibrary("JIntellitype");
-      } catch (Throwable ex) {
+      } catch (Throwable exLoadLibrary) {
          try {
             if (getLibraryLocation() != null) {
                System.load(getLibraryLocation());
@@ -110,9 +110,9 @@ public final class JIntellitype implements JIntellitypeConstants {
                   System.load(tmpDir + dll);
                }
             }
-         } catch (Throwable ex2) {
+         } catch (Throwable exAllFailed) {
             throw new JIntellitypeException(
-                     "Could not load JIntellitype.dll from local file system or from inside JAR", ex2);
+                     "Could not load JIntellitype.dll from local file system or from inside JAR", exAllFailed);
          }
       }
 
@@ -128,16 +128,17 @@ public final class JIntellitype implements JIntellitypeConstants {
     * @throws IOException if any IO error occurs
     */
    private void fromJarToFs(String jarPath, String filePath) throws IOException {
-      File file = new File(filePath);
-      if (file.exists()) {
-         boolean success = file.delete();
-         if (!success) {
-            throw new IOException("couldn't delete " + filePath);
-         }
-      }
       InputStream is = null;
       OutputStream os = null;
       try {
+         File file = new File(filePath);
+         if (file.exists()) {
+            boolean success = file.delete();
+            if (!success) {
+               throw new IOException("Could not delete file: " + filePath);
+            }
+         }
+
          is = ClassLoader.getSystemClassLoader().getResourceAsStream(jarPath);
          os = new FileOutputStream(filePath);
          byte[] buffer = new byte[8192];
@@ -145,6 +146,8 @@ public final class JIntellitype implements JIntellitypeConstants {
          while ((bytesRead = is.read(buffer)) != -1) {
             os.write(buffer, 0, bytesRead);
          }
+      } catch (Exception ex) {
+         throw new IOException("FromJarToFileSystem could not load DLL: " + jarPath, ex);
       } finally {
          if (is != null) {
             is.close();
@@ -328,8 +331,7 @@ public final class JIntellitype implements JIntellitypeConstants {
 
    /**
     * Checks to make sure the OS is a Windows flavor and that the JIntellitype
-    * DLL is found in the path and the JDK is 32 bit not 64 bit. The DLL
-    * currently only supports 32 bit JDK.
+    * DLL is found in the path.
     * <p>
     * @return true if Jintellitype may be used, false if not
     */
