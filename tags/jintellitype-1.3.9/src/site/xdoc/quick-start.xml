@@ -1,0 +1,110 @@
+<document>
+
+  <properties>
+    <title>JIntellitype</title>
+    <author email="info.AT.melloware.DOT.com">Emil A Lefkof III</author>
+  </properties>
+
+  <body>
+    <section name="Quick Start Guide">
+    
+      <p>
+      Here is a simple quick start for getting up and running with JIntellitype quickly. 
+      An <a href="xref-test/com/melloware/JIntellitypeTester.html">Example</a> is also included in the 
+      distribution to show you how easy it is to use JIntellitype.
+      </p>
+	  
+	  <subsection name="Eclipse">
+	  <p>
+      If you are familiar with Eclipse there is a full working example Eclipse project that can be 
+	  found here <a href="http://melloware.com/download/jintellitype/jintellitype-example.zip">Eclipse Example</a>.  
+	  In Eclipse just navigate to <strong>File->Import->Existing Project Into Workspace</strong> and you are ready to go.
+      </p>
+	  </subsection>
+      
+	  <subsection name="Instructions">
+      <p>
+        1. Make sure JIntellitype.dll is in your PATH or in \Windows\System32.
+      </p>
+      <p>
+        2. Initialize a <a href="apidocs/com/melloware/jintellitype/JIntellitype.html">JIntellitype</a> object.
+        <source>
+        // Initialize JIntellitype
+	...
+	JIntellitype.getInstance();
+	...
+	// OPTIONAL: check to see if an instance of this application is already
+        // running, use the name of the window title of this JFrame for checking
+        if (JIntellitype.checkInstanceAlreadyRunning("MyApp")) {
+           LOG.error("An instance of this application is already running");
+           System.exit(1);
+        }
+	</source>
+      </p>
+      
+      <p>
+        3. To listen to hotkey's, you need to register the combinations to listen for.
+        <source>
+        // Assign global hotkeys to Windows+A and ALT+SHIFT+B
+        JIntellitype.getInstance().registerHotKey(1, JIntellitype.MOD_WIN, (int)'A');
+        JIntellitype.getInstance().registerHotKey(2, JIntellitype.MOD_ALT + JIntellitype.MOD_SHIFT, (int)'B');
+
+        //or you can use the Swing constants instead
+        JIntellitype.getInstance().registerSwingHotKey(3, Event.CTRL_MASK + Event.SHIFT_MASK, (int)'C');
+        
+        // To unregister them just call unregisterHotKey with the unique identifier
+        JIntellitype.getInstance().unregisterHotKey(1);
+        JIntellitype.getInstance().unregisterHotKey(2);
+        JIntellitype.getInstance().unregisterHotKey(3);
+	</source>
+      </p>
+      
+      <p>
+        4. Make sure to add a <a href="apidocs/com/melloware/jintellitype/HotkeyListener.html">HotKeyListener</a> and implement the interface.
+        <source>
+        //assign this class to be a HotKeyListener
+        JIntellitype.getInstance().addHotKeyListener(this);
+        
+        // listen for hotkey
+        public void onHotKey(int aIdentifier) {
+           if (aIdentifier == 1)
+             System.out.println("WINDOWS+A hotkey pressed");
+           }
+        }
+	</source>
+      </p>
+      
+      <p>
+        5. To use Intellitype commands implement the <a href="apidocs/com/melloware/jintellitype/IntellitypeListener.html">IntellitypeListener</a> interface.
+        <source>
+        //assign this class to be a IntellitypeListener
+        JIntellitype.getInstance().addIntellitypeListener(this);
+        
+        // listen for intellitype play/pause command
+        public void onIntellitype(int aCommand) {
+           switch (aCommand) {
+		case JIntellitype.APPCOMMAND_MEDIA_PLAY_PAUSE:
+			System.out.println("Play/Pause message received " + Integer.toString(aCommand));
+			break;
+		default:
+			System.out.println("Undefined INTELLITYPE message caught " + Integer.toString(aCommand));
+			break;
+		}
+        }
+	</source>
+      </p>
+      
+      <p>
+        6. Don't forget to call the cleanup method to release the DLL resources.
+        <source>
+        // Termination, make sure to call before exiting
+	...
+	JIntellitype.getInstance().cleanUp();
+	System.exit(0);
+	</source>
+      </p>
+	  </subsection>
+
+    </section>
+ </body>
+</document>

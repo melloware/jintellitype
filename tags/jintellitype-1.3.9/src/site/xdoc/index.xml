@@ -1,0 +1,136 @@
+<document>
+
+  <properties>
+    <title>Java API for Microsoft Intellitype</title>
+    <author email="info.AT.melloware.DOT.com">Emil A Lefkof III</author>
+  </properties>
+
+  <body>
+    <section name="JIntellitype API">
+
+      <subsection name="Introduction">
+      <p>
+        JIntellitype is a Java API for interacting with Microsoft Intellitype 
+        commands as well as registering for Global Hotkeys in your Java application.  
+        The API is a Java JNI library that uses a C++ DLL to do all the communication
+        with Windows.   <strong>NOTE:</strong> This library ONLY works on Windows.  If
+		you are looking for a Linux version please see <a href="http://sourceforge.net/projects/jxgrabkey/">JxGrabKey</a> project on Sourceforge.
+      </p>
+       </subsection>
+
+      <subsection name="Hotkeys">
+        <p>
+          Have you ever wanted to have CTRL+SHIFT+G maximize your Swing application 
+          on the desktop? Even if that application did not have focus?  Well, now you can! By
+          registering a Windows Hotkey combination, your application will be alerted 
+          when the combination you select is pressed anywhere in Windows.  Windows has the
+          API call <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/winui/windowsuserinterface/userinput/keyboardinput/keyboardinputreference/keyboardinputfunctions/registerhotkey.asp">RegisterHotKey</a>
+          for registering a global hotkey combination so that your app receives that message
+          no matter what else you are doing or even if your application has focus.  This is
+          a commonly requested feature in Java that has now been implemented by JIntellitype.
+          
+          Check out the <a href="quick-start.html">Quick Start Guide</a> for an example on how to use JIntellitype.
+        </p>
+
+      </subsection>
+      
+      <subsection name="Intellitype">
+
+        <p>
+          Have you ever wanted your Java application to react to those special Play, Pause, 
+          Stop keys on some newer keyboards like Winamp and Windows Media Player do?  Ever wonder how they do it? 
+          If you want your application to "listen" for those special keys, now you can with JIntellitype!  
+          Just register an IntellitypeListener and you will be notified when those messages are received.   
+          To read more about these special commands see the <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/winui/windowsuserinterface/userinput/keyboardinput/keyboardinputreference/keyboardinputmessages/wm_appcommand.asp">MSDN Documentation</a>
+          about the Intellitype commands.
+          
+          Check out the <a href="quick-start.html">Quick Start Guide</a> for an example on how to use JIntellitype.
+        </p>
+
+      </subsection>
+      
+      <subsection name="Donate">
+        <p>
+          Although JIntellitype is open source, small financial donations are appreciated.  By supporting Melloware, you help fund the development
+          (mainly development tools and internet access etc) of Melloware's Software.   To send money, simply click on the PayPal icon to the left. 
+        </p>
+      </subsection>
+      
+      <subsection name="Applications Using JIntellitype">
+        <p>
+          <a href="http://melloware.com/products/jukes/index.html">Jukes</a> cross platform music player and organizer.
+        </p>
+        <p>
+          <a href="http://jajuk.sourceforge.net">JaJuk</a> cross platform swiss army knife music player including DJ mode and much more!
+        </p>
+        <p>
+          <a href="http://www.c2tn.de">C2TN</a> C2TN is the first RSS Reader which integrates completely into your desktop.
+        </p>
+		  <p>
+          <a href="http://www.atunes.org/">aTunes</a> aTunes is a GPL audio player and manager.
+        </p>
+		<p>
+          <a href="http://www.topkeys.net">Topkeys</a> emulates the mouse using the keyboard.
+        </p>
+		<p>
+          <a href="http://code.google.com/p/google-translate-desktop/">Google Translate Desktop</a> is a free unofficial Java desktop client based on Google Translate service.
+        </p>
+		<p>
+          <a href="http://kolovos.wiki.sourceforge.net/MiniGen">MiniGen</a> is a program that can generate text in any Windows-based (tested on XP/Vista) application based on the currently selected text in a non-invasive manner.
+        </p>
+        <p>
+          <a href="http://xtrememp.sourceforge.net/">Xtreme Media Player</a>  is a free cross-platform media player.
+        </p>
+		<p>
+          <a href="http://github.com/marnix/mytime/tree/master">MyTime</a> is a simple time tracker, mostly controlled through the tray icon.
+        </p>
+		<p>
+          <a href="http://radis.sourceforge.net/">RadiS</a> is a cool-looking mouse menu that opens upon a global hot-key. Allows sub-menus which will be displayed in an adjacent partly circle.
+        </p>
+		<p>
+          <a href="http://jshot.info/">JShot</a> is a free and multiplatform screen capture and uploader utility which allows you to capture a part of your screen and publish it in one step.
+        </p>
+		<p>
+          <a href="http://sourceforge.net/projects/opensoundboard">OpenSoundboard</a> plays sound files (.wav, .mp3) when the user presses hotkeys.
+        </p>
+		<p>
+          <a href="http://clipcomrade.sourceforge.net/">Clipcomrade</a> - simple and free open source windows clipboard manager tool
+        </p>
+		<p>
+          <a href="http://wordoholic.com/">Wordoholic Learner</a> - a cross-platform language learning tool
+        </p>
+		<p>
+          <a href="http://code.google.com/p/hotshots/">Hotshots</a> - Easy to use screenshot utility for Windows and Linux
+        </p>
+		<p>
+          <a href="http://code.google.com/p/g15lastfm/">G15Lastfm</a> - Last.fm player for G15 gaming keyboard
+        </p>
+		<p>
+          <a href="http://code.google.com/p/webapp-workplace/">webapp-workplace</a> - Web Workspace/Client to provide notifications for different web applications such as gmail, facebook, etc. 
+        </p>
+		<p>
+          <a href="http://code.google.com/p/hawkscope/">Hawkscope</a> - is a productivity tool that allows you to access your hard drive contents quickly via system tray / menubar icon with dynamic pop-up menu. 
+        </p>
+      </subsection>
+      
+      <subsection name="Features"> 
+         <ul>
+            <li>Can register global hotkey combinations in Java applications in Windows </li>
+            <li>Application is notified even if it does not have focus.</li>
+            <li>Can react to those Play, Pause, Stop, Next, Forward Media keys like Winamp</li>
+            <li>Very little code, easy to use API</li>
+            <li>Examples included in <a href="xref-test/com/melloware/JIntellitypeTester.html">JIntellitypeTester.java</a></li>
+         </ul>
+      </subsection>
+
+      
+
+    </section>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2908999-2";
+urchinTracker();
+</script>
+ </body>
+</document>

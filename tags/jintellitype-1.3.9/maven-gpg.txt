@@ -1,0 +1,1 @@
+mvn release:prepare -Dresume=false -Dusername=GOOGLECODEEMAIL -Dpassword=GOOGLECODEPASSWORD

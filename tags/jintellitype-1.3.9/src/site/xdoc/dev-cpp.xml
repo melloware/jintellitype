@@ -1,0 +1,37 @@
+<document>
+
+  <properties>
+    <title>JIntellitype</title>
+    <author email="info.AT.melloware.DOT.com">Emil A Lefkof III</author>
+  </properties>
+
+  <body>
+    <section name="Compiling Dev C++ DLL">
+    
+      <p>
+      Jintellitype uses the <a href="http://www.bloodshed.net/dev/devcpp.html">Bloodshed Dev C++ IDE</a> for compiling the JIntellitype.dll.
+      </p>
+      
+      <p>
+        1. Once you have DevC++ installed, just open the JIntellitype.dev project file.
+      </p>
+      <p>
+        2. Navigate to the menu option <strong>Project->Options</strong>.
+      </p>
+      <p>
+        3. Make sure to set the entries in the screenshot below to your JDK location.
+        <br/>
+		<img alt="Project Options" src="./images/devc-jni.jpg"/>
+      </p>
+      
+      <p>
+        4. Change your <strong>Project->Options Build Options</strong> to point to an output directory of your choosing.
+        
+      </p>
+      
+      <p>
+        5. Use the menu or toolbar button to build the DLL!
+      </p>
+    </section>
+ </body>
+</document>
