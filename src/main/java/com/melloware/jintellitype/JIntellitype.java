@@ -391,9 +391,7 @@ public final class JIntellitype implements JIntellitypeConstants {
     * @param libraryFile the java.io.File representing the DLL
     */
    public static void setLibraryLocation(File libraryFile) {
-      if (!libraryFile.isAbsolute()) {
-         JIntellitype.libraryLocation = libraryFile.getAbsolutePath();
-      }
+      JIntellitype.libraryLocation = libraryFile.getAbsolutePath();
    }
 
    /**
