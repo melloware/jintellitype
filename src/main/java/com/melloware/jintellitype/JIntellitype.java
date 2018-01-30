@@ -60,6 +60,11 @@ public final class JIntellitype implements JIntellitypeConstants {
     * Static variable to hold the libary location if set
     */
    private static String libraryLocation = null;
+   
+   /**
+    * Static variable to hold InputStream for the library
+    */
+   private static InputStream libraryInputStream = null;
 
    /**
     * Listeners collection for Hotkey events
@@ -128,7 +133,7 @@ public final class JIntellitype implements JIntellitypeConstants {
     * @throws IOException if any IO error occurs
     */
    private void fromJarToFs(String jarPath, String filePath) throws IOException {
-      InputStream is = null;
+      InputStream is = libraryInputStream;
       OutputStream os = null;
       try {
          File file = new File(filePath);
@@ -139,7 +144,8 @@ public final class JIntellitype implements JIntellitypeConstants {
             }
          }
 
-         is = ClassLoader.getSystemClassLoader().getResourceAsStream(jarPath);
+         if (is == null)
+            is = ClassLoader.getSystemClassLoader().getResourceAsStream(jarPath);
          os = new FileOutputStream(filePath);
          byte[] buffer = new byte[8192];
          int bytesRead;
