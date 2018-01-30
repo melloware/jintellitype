@@ -399,6 +399,15 @@ public final class JIntellitype implements JIntellitypeConstants {
    public static void setLibraryLocation(File libraryFile) {
       JIntellitype.libraryLocation = libraryFile.getAbsolutePath();
    }
+   
+   /**
+    * Sets the libraryInputStream of the DLL using InputStream
+    * <p>
+    * @param libraryInputStream the java.io.InputStream representing the DLL
+    */
+   public static void setLibraryInputStream(InputStream libraryInputStream) {
+      JIntellitype.libraryInputStream = libraryInputStream;
+   }
 
    /**
     * Notifies all listeners that Hotkey was pressed.
