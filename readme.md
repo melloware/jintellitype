@@ -1,13 +1,13 @@
 >JIntellitype Read Me
-
+>
 >http://www.melloware.com/
 
 ---
 
 >Licensed under the Apache License, Version 2.0 (the "License");
-
+>
 >you may not use this file except in compliance with the License.
-
+>
 >You may obtain a copy of the License at
 >
 >    http://www.apache.org/licenses/LICENSE-2.0
@@ -20,7 +20,7 @@ limitations under the License.
 
 ---
 
-##Contents##
+##Contents
 
 1. Overview
 2. Features
@@ -31,7 +31,7 @@ limitations under the License.
 
 ---
 
-##1.Overview##
+##1.Overview
 
    JIntellitype is an API for interacting with Microsoft Intellitype keyboard commands as well as registering for Global Hotkeys in your application.
    The API is a Java JNI library that uses a DLL to do all the communication with Windows.
@@ -44,7 +44,7 @@ limitations under the License.
    Even some laptops now have those special keys built in and if you want your application to "listen" for them, now you
    can!
 
-##2.Features##
+##2.Features
 * Can register global hotkey combinations in Windows.
 
 * Application is notified even if it does not have focus.
@@ -55,7 +55,7 @@ limitations under the License.
 
 * Examples included in JIntellitypeTester.java.
 
-##3.Installation##
+##3.Installation
 
 FOR USERS:
 
@@ -83,7 +83,7 @@ FOR DEVELOPERS:
       Where "java5" is the location of your Java JDK.
 
 
-##4.Quick Usage##
+##4.Quick Usage
 
     // Create JIntellitype
        ...
@@ -121,7 +121,7 @@ FOR DEVELOPERS:
 
 See demo at test/com/melloware/jintellitype/JIntellitypeTester.java for more info..
 
-##5.Acknowledgements##
+##5.Acknowledgements
 
    JIntellitype is distributed with a small number of libraries on which it depends.
 
@@ -129,7 +129,7 @@ See demo at test/com/melloware/jintellitype/JIntellitypeTester.java for more inf
 
  * None currently
 
-##6.Feedback##
+##6.Feedback
    Your feedback on JIntellitype (hopefully constructive) is always welcome.
 
  Please visit http://www.melloware.com/ for links to browse and join mailing lists, file bugs and submit feature requests.
