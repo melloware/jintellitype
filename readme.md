@@ -69,10 +69,10 @@ FOR USERS:
 
 FOR DEVELOPERS:
 
-* To build you need Maven 2.0.7 or higher installed from Apache.
+* To build you need [Apache Maven](https://maven.apache.org/) or higher installed from Apache.
   Just run "mvn package" from the directory where the pom.xml is located to build the project.
 
-* To build the C++ code you need Bloodshed C++ IDE.
+* To build the C++ code you need [Bloodshed C++ IDE](http://www.bloodshed.net/devcpp.html).
   When you load the .dev project included do not forget to edit Project->Options and under Directories Tab change the Includes directory to contain.
 
       both:
