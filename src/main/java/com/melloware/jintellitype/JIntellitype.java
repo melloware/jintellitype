@@ -449,19 +449,19 @@ public final class JIntellitype implements JIntellitypeConstants {
     */
    protected static int swingToIntelliType(int swingKeystrokeModifier) {
       int mask = 0;
-      if ((swingKeystrokeModifier & InputEvent.SHIFT_MASK) == InputEvent.SHIFT_MASK
+      if ((swingKeystrokeModifier & InputEvent.SHIFT_DOWN_MASK) == InputEvent.SHIFT_DOWN_MASK
                || (swingKeystrokeModifier & InputEvent.SHIFT_DOWN_MASK) == InputEvent.SHIFT_DOWN_MASK) {
          mask |= JIntellitypeConstants.MOD_SHIFT;
       }
-      if ((swingKeystrokeModifier & InputEvent.ALT_MASK) == InputEvent.ALT_MASK
+      if ((swingKeystrokeModifier & InputEvent.ALT_DOWN_MASK) == InputEvent.ALT_DOWN_MASK
                || (swingKeystrokeModifier & InputEvent.ALT_DOWN_MASK) == InputEvent.ALT_DOWN_MASK) {
          mask |= JIntellitypeConstants.MOD_ALT;
       }
-      if ((swingKeystrokeModifier & InputEvent.CTRL_MASK) == InputEvent.CTRL_MASK
+      if ((swingKeystrokeModifier & InputEvent.CTRL_DOWN_MASK) == InputEvent.CTRL_DOWN_MASK
                || (swingKeystrokeModifier & InputEvent.CTRL_DOWN_MASK) == InputEvent.CTRL_DOWN_MASK) {
          mask |= JIntellitypeConstants.MOD_CONTROL;
       }
-      if ((swingKeystrokeModifier & InputEvent.META_MASK) == InputEvent.META_MASK
+      if ((swingKeystrokeModifier & InputEvent.META_DOWN_MASK) == InputEvent.META_DOWN_MASK
                || (swingKeystrokeModifier & InputEvent.META_DOWN_MASK) == InputEvent.META_DOWN_MASK) {
          mask |= JIntellitypeConstants.MOD_WIN;
       }
