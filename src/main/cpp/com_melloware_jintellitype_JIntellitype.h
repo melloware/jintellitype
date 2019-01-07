@@ -45,7 +45,7 @@ JNIEXPORT void JNICALL Java_com_melloware_jintellitype_JIntellitype_unregHotKey
  * Signature: (Ljava/lang/String;)Z
  */
 JNIEXPORT jboolean JNICALL Java_com_melloware_jintellitype_JIntellitype_isRunning
-  (JNIEnv *, jclass, jstring);
+  (JNIEnv *, jobject, jstring);
 
 #ifdef __cplusplus
 }
