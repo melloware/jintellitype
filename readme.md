@@ -133,5 +133,3 @@ See demo at test/com/melloware/jintellitype/JIntellitypeTester.java for more inf
    Your feedback on JIntellitype (hopefully constructive) is always welcome.
 
  Please visit http://www.melloware.com/ for links to browse and join mailing lists, file bugs and submit feature requests.
-
-   Also a forum is set up at http://forum.melloware.com/index.php for discussion.
