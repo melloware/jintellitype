@@ -1,3 +1,7 @@
+[![Maven](https://img.shields.io/maven-central/v/com.melloware/jintellitype.svg)](http://repo1.maven.org/maven2/com/melloware/jintellitype/)
+[![Javadocs](http://javadoc.io/badge/com.melloware/jintellitype.svg)](http://javadoc.io/doc/com.melloware/jintellitype)
+[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+
 >JIntellitype Read Me
 >
 >http://www.melloware.com/
