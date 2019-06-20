@@ -2,6 +2,8 @@
 [![Javadocs](http://javadoc.io/badge/com.melloware/jintellitype.svg)](http://javadoc.io/doc/com.melloware/jintellitype)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
+[![JIntellitype Logo](https://melloware.com/wp-content/uploads/2012/03/jintellitype-150x150.png)](https://melloware.com)
+
 >JIntellitype Read Me
 >
 >http://www.melloware.com/
