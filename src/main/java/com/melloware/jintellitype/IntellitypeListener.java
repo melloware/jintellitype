@@ -1,7 +1,7 @@
 /**
  * JIntellitype
  * -----------------
- * Copyright 2005-2008 Emil A. Lefkof III, Melloware Inc.
+ * Copyright 2005-2019 Emil A. Lefkof III, Melloware Inc.
  *
  * I always give it my best shot to make a program useful and solid, but
  * remeber that there is absolutely no warranty for using this program as
@@ -32,10 +32,9 @@ package com.melloware.jintellitype;
  * events you now can with JIntellitype.  Just implement this interface and 
  * you can now take action when those special Media keys are pressed.
  * <p>
- * Copyright (c) 1999-2008
- * Melloware, Inc. <http://www.melloware.com>
- * @author Emil A. Lefkof III <info@melloware.com>
- * @version 1.3.1
+ * Copyright (c) 1999-2019 Melloware, Inc. <http://www.melloware.com>
+ * @author Emil A. Lefkof III <mellowaredev@gmail.com>
+ * @version 1.4.0
  * 
  * @see http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/winui/windowsuserinterface/userinput/keyboardinput/keyboardinputreference/keyboardinputmessages/wm_appcommand.asp
  */

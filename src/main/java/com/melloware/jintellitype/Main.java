@@ -1,7 +1,7 @@
 /**
  * JIntellitype
  * -----------------
- * Copyright 2005-2008 Emil A. Lefkof III, Melloware Inc.
+ * Copyright 2005-2019 Emil A. Lefkof III, Melloware Inc.
  *
  * I always give it my best shot to make a program useful and solid, but
  * remeber that there is absolutely no warranty for using this program as
@@ -28,12 +28,10 @@ import java.util.Properties;
  * jar. Outputs version information and other information about the environment 
  * on which the jar is being executed.
  * <p>
- * Copyright (c) 1999-2008
- * Melloware, Inc. <http://www.melloware.com>
- * @author Emil A. Lefkof III <info@melloware.com>
- * @version 1.3.1
+ * Copyright (c) 1999-2019 Melloware, Inc. <http://www.melloware.com>
+ * @author Emil A. Lefkof III <mellowaredev@gmail.com>
+ * @version 1.4.0
  */
-@SuppressWarnings("")
 public final class Main {
 
     /**
