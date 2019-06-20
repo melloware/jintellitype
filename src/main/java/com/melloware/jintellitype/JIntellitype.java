@@ -20,9 +20,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.swing.SwingUtilities;
@@ -46,6 +48,12 @@ import javax.swing.SwingUtilities;
  */
 public final class JIntellitype implements JIntellitypeConstants {
 
+    // for unit-testing only:
+    static boolean isDllLoaded = false;
+    static {
+        loadLibrary();
+    }
+    
    /**
     * Static variable to hold singleton.
     */
@@ -95,34 +103,40 @@ public final class JIntellitype implements JIntellitypeConstants {
     * calling.
     */
    private JIntellitype() {
-      try {
-         // Load JNI library
-         System.loadLibrary("JIntellitype");
-      } catch (Throwable exLoadLibrary) {
-         try {
-            if (getLibraryLocation() != null) {
-               System.load(getLibraryLocation());
-            } else {
-               String jarPath = "com/melloware/jintellitype/";
-               String tmpDir = System.getProperty("java.io.tmpdir");
-               try {
-                  String dll = "JIntellitype.dll";
-                  fromJarToFs(jarPath + dll, tmpDir + dll);
-                  System.load(tmpDir + dll);
-               } catch (UnsatisfiedLinkError e) {
-                  String dll = "JIntellitype64.dll";
-                  fromJarToFs(jarPath + dll, tmpDir + dll);
-                  System.load(tmpDir + dll);
-               }
-            }
-         } catch (Throwable exAllFailed) {
-            throw new JIntellitypeException(
-                     "Could not load JIntellitype.dll from local file system or from inside JAR", exAllFailed);
-         }
-      }
-
       initializeLibrary();
       this.keycodeMap = getKey2KeycodeMapping();
+   }
+
+   private static void loadLibrary() {
+       
+       if (!isJIntellitypeSupported()) {
+           return;
+       }
+       
+       boolean is64bit = System.getProperty("os.arch", "unknown").contains("64");
+       String libraryName = is64bit ? "JIntellitype64.dll" : "JIntellitype.dll";
+       File configDir = Paths.get(System.getProperty("user.home", ""), "AppData", "Local").toFile();
+       if (!configDir.exists()) {
+           configDir = new File(System.getProperty("java.io.tmpdir", System.getProperty("user.dir", "")));
+       }
+       
+       File extractedLibrary = Paths.get(configDir.getAbsolutePath(), "jintellitype", Main.getProjectVersion(),
+           libraryName)
+           .toFile();
+       
+       try {
+           System.load(extractedLibrary.getAbsolutePath());
+       } catch (Throwable throwable) {
+           try {
+               fromJarToFs("com/melloware/jintellitype/windows/" + libraryName, extractedLibrary.getAbsolutePath());
+               System.load(extractedLibrary.getAbsolutePath());
+           } catch (Throwable exAllFailed) {
+               throw new JIntellitypeException(
+                        "Could not load JIntellitype.dll from local file system or from inside JAR", exAllFailed);
+           }
+       }
+       
+       isDllLoaded = true;
    }
 
    /**
@@ -132,7 +146,7 @@ public final class JIntellitype implements JIntellitypeConstants {
     * @param filePath the file path to extract to
     * @throws IOException if any IO error occurs
     */
-   private void fromJarToFs(String jarPath, String filePath) throws IOException {
+   private static void fromJarToFs(String jarPath, String filePath) throws IOException {
       InputStream is = libraryInputStream;
       OutputStream os = null;
       try {
@@ -143,9 +157,11 @@ public final class JIntellitype implements JIntellitypeConstants {
                throw new IOException("Could not delete file: " + filePath);
             }
          }
+         if (!file.getParentFile().exists()) {
+             file.getParentFile().mkdirs();
+         }
 
-         if (is == null)
-            is = ClassLoader.getSystemClassLoader().getResourceAsStream(jarPath);
+         //is = ClassLoader.getSystemClassLoader().getResourceAsStream(jarPath);
          os = new FileOutputStream(filePath);
          byte[] buffer = new byte[8192];
          int bytesRead;
@@ -346,67 +362,14 @@ public final class JIntellitype implements JIntellitypeConstants {
       String os = "none";
 
       try {
-         os = System.getProperty("os.name").toLowerCase();
+         os = System.getProperty("os.name").toLowerCase(Locale.ROOT);
       } catch (SecurityException ex) {
          // we are not allowed to look at this property
          System.err.println("Caught a SecurityException reading the system property "
                   + "'os.name'; the SystemUtils property value will default to null.");
       }
 
-      // only works on Windows OS currently
-      if (os.startsWith("windows")) {
-         // try an get the instance and if it succeeds then return true
-         try {
-            getInstance();
-            result = true;
-         } catch (Exception e) {
-            result = false;
-         }
-      }
-
-      return result;
-   }
-
-   /**
-    * Gets the libraryLocation.
-    * <p>
-    * @return Returns the libraryLocation.
-    */
-   public static String getLibraryLocation() {
-      return libraryLocation;
-   }
-
-   /**
-    * Sets the libraryLocation.
-    * <p>
-    * @param libraryLocation The libraryLocation to set.
-    */
-   public static void setLibraryLocation(String libraryLocation) {
-      final File dll = new File(libraryLocation);
-      if (!dll.isAbsolute()) {
-         JIntellitype.libraryLocation = dll.getAbsolutePath();
-      } else {
-         // absolute path, no further calculation needed
-         JIntellitype.libraryLocation = libraryLocation;
-      }
-   }
-
-   /**
-    * Sets the libraryLocation of the DLL using a File object.
-    * <p>
-    * @param libraryFile the java.io.File representing the DLL
-    */
-   public static void setLibraryLocation(File libraryFile) {
-      JIntellitype.libraryLocation = libraryFile.getAbsolutePath();
-   }
-   
-   /**
-    * Sets the libraryInputStream of the DLL using InputStream
-    * <p>
-    * @param libraryInputStream the java.io.InputStream representing the DLL
-    */
-   public static void setLibraryInputStream(InputStream libraryInputStream) {
-      JIntellitype.libraryInputStream = libraryInputStream;
+      return os.startsWith("windows");
    }
 
    /**

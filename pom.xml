@@ -20,6 +20,12 @@
 	</organization>
 	<properties>
 		<organization.logo>http://melloware.com/images/header.jpg</organization.logo>
+        <default.encoding>UTF-8</default.encoding>
+        <project.build.sourceEncoding>${default.encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${default.encoding}</project.reporting.outputEncoding>
+        <maven.compiler.plugin.encoding>${default.encoding}</maven.compiler.plugin.encoding>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
 	<inceptionYear>1999</inceptionYear>
 	<scm>
@@ -33,9 +39,6 @@
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
-	<prerequisites>
-		<maven>3.0.0</maven>
-	</prerequisites>
 	<developers>
 		<developer>
 			<id>mellowaredev@gmail.com</id>
@@ -134,28 +137,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.4</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.2.1</version>
-				<configuration>
-					<releaseProfiles>release-sign-artifacts</releaseProfiles>
-					<goals>clean javadoc:jar source:jar deploy</goals>
-				</configuration>
-			</plugin>
-			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.2.1</version>
 				<configuration>
@@ -185,7 +166,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.3.1</version>
+				<version>3.1.1</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -215,11 +196,27 @@
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<groupId>org.apache.maven.plugins</groupId>
-				<version>2.9</version>
+				<version>3.0.0-M3</version>
 				<configuration>
 					<skip>true</skip>
 				</configuration>
 			</plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- avoid loading the dll into the main maven process: -->
+                    <forkCount>1</forkCount>
+                </configuration>
+            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-changes-plugin</artifactId>
@@ -239,6 +236,14 @@
 			</plugin>
 		</plugins>
 	</build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 	<reporting>
 		<plugins>
 			<plugin>
@@ -333,6 +338,14 @@
 							</execution>
 						</executions>
 					</plugin>
+                    <plugin>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <configuration>
+                            <releaseProfiles>release-sign-artifacts</releaseProfiles>
+                            <goals>clean javadoc:jar source:jar deploy</goals>
+                        </configuration>
+                    </plugin>
 				</plugins>
 			</build>
 		</profile>
