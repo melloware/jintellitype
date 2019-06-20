@@ -103,7 +103,7 @@ FOR DEVELOPERS:
        System.exit(0);
 ```
 
-See demo at test/com/melloware/jintellitype/JIntellitypeTester.java for more info..
+See demo at  [JIntellitype Demo Application](https://github.com/melloware/jintellitype/blob/master/src/main/java/com/melloware/jintellitype/JIntellitypeDemo.java)  for more info..
 
 ## 5.Acknowledgements
 
