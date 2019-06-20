@@ -67,24 +67,25 @@ FOR DEVELOPERS:
 
 ## 4.Quick Usage
 
-    // Create JIntellitype
+```java
+       // Create JIntellitype
        ...
         JIntellitype.getInstance().addHotKeyListener(new HotKeyListener() {...);
         JIntellitype.getInstance().addIntellitypeListener(new IntellitypeListener() {...);
        ...
 
-    // Assign global hotkeys to Windows+A and ALT+SHIFT+B
+        // Assign global hotkeys to Windows+A and ALT+SHIFT+B
         JIntellitype.getInstance().registerHotKey(1, JIntellitype.MOD_WIN, (int)'A');
         JIntellitype.getInstance().registerHotKey(2, JIntellitype.MOD_ALT + JIntellitype.MOD_SHIFT, (int)'B');
 
-    // listen for hotkey
+        // listen for hotkey
         public void onHotKey(int aIdentifier) {
            if (aIdentifier == 1)
              System.out.println("WINDOWS+A hotkey pressed");
            }
         }
 
-    // listen for intellitype play/pause command
+        // listen for intellitype play/pause command
         public void onIntellitype(int aCommand) {
             switch (aCommand) {
                 case JIntellitype.APPCOMMAND_MEDIA_PLAY_PAUSE:
@@ -96,10 +97,11 @@ FOR DEVELOPERS:
             }
         }
 
-    // Termination
+       // Termination
        ...
        JIntellitype.getInstance().cleanUp();
        System.exit(0);
+```
 
 See demo at test/com/melloware/jintellitype/JIntellitypeTester.java for more info..
 
