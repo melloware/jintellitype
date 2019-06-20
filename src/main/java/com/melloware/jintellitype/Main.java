@@ -65,7 +65,7 @@ public final class Main {
      * <p>
      * @return the full version number of this application
      */
-    private static String getProjectVersion() {
+    static String getProjectVersion() {
         String version;
 
         try {

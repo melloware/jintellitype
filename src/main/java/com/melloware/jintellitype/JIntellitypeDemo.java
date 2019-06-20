@@ -17,7 +17,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.melloware;
+package com.melloware.jintellitype;
 
 import java.awt.BorderLayout;
 import java.awt.Event;
@@ -36,10 +36,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 
-import com.melloware.jintellitype.HotkeyListener;
-import com.melloware.jintellitype.IntellitypeListener;
-import com.melloware.jintellitype.JIntellitype;
-
 /**
  * Swing based test application to test all the functions of the JIntellitype
  * library.
@@ -49,10 +45,10 @@ import com.melloware.jintellitype.JIntellitype;
  * @author Melloware <mellowaredev@gmail.com>
  * @version 1.0
  */
-public class JIntellitypeTester extends JFrame implements HotkeyListener, IntellitypeListener {
+public class JIntellitypeDemo extends JFrame implements HotkeyListener, IntellitypeListener {
 
 	private static final long serialVersionUID = 1L;
-	private static JIntellitypeTester mainFrame;
+	private static JIntellitypeDemo mainFrame;
 	private static final int WINDOWS_A = 88;
 	private static final int ALT_SHIFT_B = 89;
 	private static final int CTRL_SHIFT_C = 90;
@@ -72,7 +68,7 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
 	/**
 	 * Creates new form.
 	 */
-	public JIntellitypeTester() {
+	public JIntellitypeDemo() {
 		initComponents();
 	}
 
@@ -96,7 +92,7 @@ public class JIntellitypeTester extends JFrame implements HotkeyListener, Intell
 			System.exit(1);
 		}
 
-		mainFrame = new JIntellitypeTester();
+		mainFrame = new JIntellitypeDemo();
 		mainFrame.setTitle("JIntellitype Test Application");
 		center(mainFrame);
 		mainFrame.setVisible(true);

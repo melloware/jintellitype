@@ -52,10 +52,9 @@ Contents
    ------------
    
    FOR USERS:
-   -> Copy the following files into your classpath 
-        -> jintellitype.jar
-        -> JIntellitype.dll (or put in Windows/System32)
-		-> JIntellitype64.dll (rename to JIntellitype.dll and put in path)
+   -> The 32/64 bit dlls get extracted automatically.
+   -> Currently does not work on Java 11, probably starting with Java 9. Latest recommended version is
+      Java 8.
         
    FOR DEVELOPERS:
    -> To build you need Maven 2.0.7 or higher installed from Apache.  Just run "mvn package" from the
