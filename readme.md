@@ -4,7 +4,7 @@
 
 # JIntellitype
 
-[![JIntellitype Logo](https://melloware.com/wp-content/uploads/2012/03/jintellitype-150x150.png)](https://melloware.com)
+[![JIntellitype Logo](https://media.melloware.com/media/2012/03/jintellitype.png)](https://melloware.com)
 
 ## Contents
 
