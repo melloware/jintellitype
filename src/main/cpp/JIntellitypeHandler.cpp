@@ -24,6 +24,7 @@
 #include "JIntellitypeHandler.h"
 #include "JIntellitypeThread.h"
 #include <stdlib.h>
+#include <iostream>
 
 
 UINT WM_SHELLHOOK = 0;
@@ -34,10 +35,10 @@ UINT WM_SHELLHOOK = 0;
 JIntellitypeHandler *JIntellitypeHandler::extract( JNIEnv *env, jobject object )
 {                
 	// Get field ID
-	jfieldID l_handlerId = env->GetFieldID( env->GetObjectClass( object ), "handler", "I" );
+	jfieldID l_handlerId = env->GetFieldID( env->GetObjectClass( object ), "handler", "J" );
 
 	// Get field
-	JIntellitypeHandler *l_handler = (JIntellitypeHandler *) env->GetIntField( object, l_handlerId );
+	JIntellitypeHandler *l_handler = (JIntellitypeHandler *) env->GetLongField(object, l_handlerId);
 
 	return l_handler;
 }
@@ -57,10 +58,10 @@ JIntellitypeHandler::JIntellitypeHandler( JNIEnv *env, jobject object )
 	m_fireIntellitype = env->GetMethodID(  env->GetObjectClass( m_object ) , "onIntellitype", "(I)V" );
 
 	// Get field ID
-	jfieldID l_handlerId = env->GetFieldID(  env->GetObjectClass( m_object ) , "handler", "I" );
+	jfieldID l_handlerId = env->GetFieldID(  env->GetObjectClass( m_object ) , "handler", "J" );
 
 	// Set field
-	env->SetIntField( m_object, l_handlerId, (jint) this );
+	env->SetLongField( m_object, l_handlerId, (jlong) this );
 }
 
 /*
@@ -69,10 +70,10 @@ JIntellitypeHandler::JIntellitypeHandler( JNIEnv *env, jobject object )
 JIntellitypeHandler::~JIntellitypeHandler()
 {
 	// Get field ID
-	jfieldID l_handlerId = g_JIntellitypeThread.m_env->GetFieldID( g_JIntellitypeThread.m_env->GetObjectClass( m_object ), "handler", "I" );
+	jfieldID l_handlerId = g_JIntellitypeThread.m_env->GetFieldID( g_JIntellitypeThread.m_env->GetObjectClass( m_object ), "handler", "J" );
 
 	// Set field
-	g_JIntellitypeThread.m_env->SetIntField( m_object, l_handlerId, 0 );
+	g_JIntellitypeThread.m_env->SetLongField( m_object, l_handlerId, 0 );
 
 	// Release our reference
 	g_JIntellitypeThread.m_env->DeleteGlobalRef( m_object );
@@ -137,7 +138,7 @@ void JIntellitypeHandler::doInitialize()
 		return;
 
 	 //Set pointer to this object inside the Window's USERDATA section
-	SetWindowLong( m_window, GWL_USERDATA, (LONG) this );
+	SetWindowLongPtr( m_window, GWLP_USERDATA, (LONG_PTR) this );
 	
 	// hide the window
 	ShowWindow(m_window, SW_HIDE);
@@ -255,7 +256,7 @@ LRESULT CALLBACK JIntellitypeHandler::WndProc( HWND hWnd, UINT uMessage, WPARAM 
     if (uMessage == WM_SHELLHOOK) {
         if (wParam == HSHELL_APPCOMMAND) {
            jint cmd  = GET_APPCOMMAND_LPARAM(lParam);        
-           JIntellitypeHandler *l_this = (JIntellitypeHandler *) GetWindowLong( hWnd, GWL_USERDATA ); 
+           JIntellitypeHandler *l_this = (JIntellitypeHandler *) GetWindowLongPtr( hWnd, GWLP_USERDATA ); 
            l_this->intellitype(cmd);          
         }
         return TRUE;        
@@ -264,7 +265,7 @@ LRESULT CALLBACK JIntellitypeHandler::WndProc( HWND hWnd, UINT uMessage, WPARAM 
     // check for registered hotkey messages and send them to HotKeyListeners
     switch( uMessage ) {
         case WM_HOTKEY: {
-            JIntellitypeHandler *l_this = (JIntellitypeHandler *) GetWindowLong( hWnd, GWL_USERDATA ); 
+            JIntellitypeHandler *l_this = (JIntellitypeHandler *) GetWindowLongPtr( hWnd, GWLP_USERDATA ); 
         	l_this->fireHotKey(wParam);
             return TRUE;
     		break;      

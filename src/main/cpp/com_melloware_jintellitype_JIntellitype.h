@@ -31,6 +31,9 @@ JNIEXPORT void JNICALL Java_com_melloware_jintellitype_JIntellitype_regHotKey
 JNIEXPORT void JNICALL Java_com_melloware_jintellitype_JIntellitype_terminate
   (JNIEnv *, jobject);
 
+JNIEXPORT jboolean JNICALL Java_com_melloware_jintellitype_JIntellitype_isRunning
+  (JNIEnv* env, jclass, jstring wndName);
+
 /*
  * Class:     com_melloware_jintellitype_JIntellitype
  * Method:    unregHotKey
@@ -45,7 +48,7 @@ JNIEXPORT void JNICALL Java_com_melloware_jintellitype_JIntellitype_unregHotKey
  * Signature: (Ljava/lang/String;)Z
  */
 JNIEXPORT jboolean JNICALL Java_com_melloware_jintellitype_JIntellitype_isRunning
-  (JNIEnv *, jobject, jstring);
+  (JNIEnv *, jclass, jstring);
 
 #ifdef __cplusplus
 }

@@ -97,7 +97,7 @@ public final class JIntellitype implements JIntellitypeConstants {
    /**
     * Handler is used by JNI code to keep different JVM instances separate
     */
-   private final int handler = 0;
+   private final long handler = 0;
 
    /**
     * Map containing key->keycode mapping
