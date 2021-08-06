@@ -133,6 +133,16 @@
 				<role>Strings for Register Hotkeys</role>
 			</roles>
 		</contributor>
+		<contributor>
+			<name>Rocket</name>
+			<email>ma2014119@outlook.com</email>
+			<url>https://github.com/RocketMaDev</url>
+			<organization />
+			<organizationUrl />
+			<roles>
+				<role>Make it usable above JDK 9</role>
+			</roles>
+		</contributor>
 	</contributors>
 	<build>
 		<plugins>
