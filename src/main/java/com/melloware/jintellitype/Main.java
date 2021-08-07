@@ -1,4 +1,4 @@
-/**
+/*
  * JIntellitype
  * -----------------
  * Copyright 2005-2019 Emil A. Lefkof III, Melloware Inc.

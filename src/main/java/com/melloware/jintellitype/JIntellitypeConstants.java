@@ -1,4 +1,4 @@
-/**
+/*
  * JIntellitype
  * -----------------
  * Copyright 2005-2019 Emil A. Lefkof III, Melloware Inc.
@@ -33,29 +33,29 @@ package com.melloware.jintellitype;
  */
 public interface JIntellitypeConstants {
    
-   public static final String ERROR_MESSAGE = "JIntellitype DLL Error";
+    String ERROR_MESSAGE = "JIntellitype DLL Error";
 	
 	// Modifier keys, can be added together
 	
 	/**
 	 * ALT key for registering Hotkeys.
 	 */
-	public static final int MOD_ALT = 1;
+	 int MOD_ALT = 1;
 	
 	/**
 	 * CONTROL key for registering Hotkeys.
 	 */
-	public static final int MOD_CONTROL = 2;
+	 int MOD_CONTROL = 2;
 	
 	/**
 	 * SHIFT key for registering Hotkeys.
 	 */
-	public static final int MOD_SHIFT = 4;
+	 int MOD_SHIFT = 4;
 	
 	/**
 	 * WINDOWS key for registering Hotkeys.
 	 */
-	public static final int MOD_WIN = 8;
+	 int MOD_WIN = 8;
 	
 	
 	// Intellitype Virtual Key Constants from MSDN  
@@ -63,119 +63,119 @@ public interface JIntellitypeConstants {
 	/**
 	 * Browser Navigate backward
 	 */
-	public static final int  APPCOMMAND_BROWSER_BACKWARD       = 1;  
+	 int  APPCOMMAND_BROWSER_BACKWARD       = 1;
 	
 	/**
 	 * Browser Navigate forward
 	 */
-	public static final int  APPCOMMAND_BROWSER_FORWARD        = 2; 
+	 int  APPCOMMAND_BROWSER_FORWARD        = 2;
 	
 	/**
 	 * Browser Refresh page
 	 */
-	public static final int  APPCOMMAND_BROWSER_REFRESH        = 3;  
+	 int  APPCOMMAND_BROWSER_REFRESH        = 3;
 	
 	/**
 	 * Browser Stop download
 	 */
-	public static final int  APPCOMMAND_BROWSER_STOP           = 4;  
+	 int  APPCOMMAND_BROWSER_STOP           = 4;
 	
 	/**
 	 * Browser Open search
 	 */
-	public static final int  APPCOMMAND_BROWSER_SEARCH         = 5;  
+	 int  APPCOMMAND_BROWSER_SEARCH         = 5;
 	
 	/**
 	 * Browser Open favorites
 	 */
-	public static final int  APPCOMMAND_BROWSER_FAVOURITES     = 6;  
+	 int  APPCOMMAND_BROWSER_FAVOURITES     = 6;
 	
 	/**
 	 * Browser Navigate home
 	 */
-	public static final int  APPCOMMAND_BROWSER_HOME           = 7;  
+	 int  APPCOMMAND_BROWSER_HOME           = 7;
 	
 	/**
 	 * Mute the volume
 	 */
-	public static final int  APPCOMMAND_VOLUME_MUTE            = 8;  
+	 int  APPCOMMAND_VOLUME_MUTE            = 8;
 	
 	/**
 	 * Lower the volume
 	 */
-	public static final int  APPCOMMAND_VOLUME_DOWN            = 9;  
+	 int  APPCOMMAND_VOLUME_DOWN            = 9;
 	
 	/**
 	 * Raise the volume
 	 */
-	public static final int  APPCOMMAND_VOLUME_UP              = 10;  
+	 int  APPCOMMAND_VOLUME_UP              = 10;
 	
 	/**
 	 * Media application go to next track.
 	 */
-	public static final int  APPCOMMAND_MEDIA_NEXTTRACK        = 11;  
+	 int  APPCOMMAND_MEDIA_NEXTTRACK        = 11;
 	
 	/**
 	 * Media application Go to previous track.
 	 */
-	public static final int  APPCOMMAND_MEDIA_PREVIOUSTRACK    = 12;  
+	 int  APPCOMMAND_MEDIA_PREVIOUSTRACK    = 12;
 	
 	/**
 	 * Media application Stop playback.
 	 */
-	public static final int  APPCOMMAND_MEDIA_STOP             = 13;  
+	 int  APPCOMMAND_MEDIA_STOP             = 13;
 	
 	/**
 	 * Media application Play or pause playback.
 	 */
-	public static final int  APPCOMMAND_MEDIA_PLAY_PAUSE       = 14;  
+	 int  APPCOMMAND_MEDIA_PLAY_PAUSE       = 14;
 	
 	/**
 	 * Open mail application
 	 */
-	public static final int  APPCOMMAND_LAUNCH_MAIL            = 15; 
+	 int  APPCOMMAND_LAUNCH_MAIL            = 15;
 	
 	/**
 	 * Go to Media Select mode.
 	 */
-	public static final int  APPCOMMAND_LAUNCH_MEDIA_SELECT    = 16;  
+	 int  APPCOMMAND_LAUNCH_MEDIA_SELECT    = 16;
 	
 	/**
 	 * Start App1.
 	 */
-	public static final int  APPCOMMAND_LAUNCH_APP1            = 17;  
+	 int  APPCOMMAND_LAUNCH_APP1            = 17;
 	
 	/**
 	 * Start App2.
 	 */
-	public static final int  APPCOMMAND_LAUNCH_APP2            = 18; 
+	 int  APPCOMMAND_LAUNCH_APP2            = 18;
 	
-	public static final int  APPCOMMAND_BASS_DOWN              = 19;
-	public static final int  APPCOMMAND_BASS_BOOST             = 20;
-	public static final int  APPCOMMAND_BASS_UP                = 21;
-	public static final int  APPCOMMAND_TREBLE_DOWN            = 22;
-	public static final int  APPCOMMAND_TREBLE_UP              = 23;
-	public static final int  APPCOMMAND_MICROPHONE_VOLUME_MUTE = 24;
-	public static final int  APPCOMMAND_MICROPHONE_VOLUME_DOWN = 25;
-	public static final int  APPCOMMAND_MICROPHONE_VOLUME_UP   = 26;
-	public static final int  APPCOMMAND_HELP                   = 27;
-	public static final int  APPCOMMAND_FIND                   = 28;
-	public static final int  APPCOMMAND_NEW                    = 29;
-	public static final int  APPCOMMAND_OPEN                   = 30;
-	public static final int  APPCOMMAND_CLOSE                  = 31;
-	public static final int  APPCOMMAND_SAVE                   = 32;
-	public static final int  APPCOMMAND_PRINT                  = 33;
-	public static final int  APPCOMMAND_UNDO                   = 34;
-	public static final int  APPCOMMAND_REDO                   = 35;
-	public static final int  APPCOMMAND_COPY                   = 36;
-	public static final int  APPCOMMAND_CUT                    = 37;
-	public static final int  APPCOMMAND_PASTE                  = 38;
-	public static final int  APPCOMMAND_REPLY_TO_MAIL          = 39;
-	public static final int  APPCOMMAND_FORWARD_MAIL           = 40;
-	public static final int  APPCOMMAND_SEND_MAIL              = 41;
-	public static final int  APPCOMMAND_SPELL_CHECK            = 42;
-	public static final int  APPCOMMAND_DICTATE_OR_COMMAND_CONTROL_TOGGLE = 43;
-	public static final int  APPCOMMAND_MIC_ON_OFF_TOGGLE      = 44;
-	public static final int  APPCOMMAND_CORRECTION_LIST        = 45;
+	 int  APPCOMMAND_BASS_DOWN              = 19;
+	 int  APPCOMMAND_BASS_BOOST             = 20;
+	 int  APPCOMMAND_BASS_UP                = 21;
+	 int  APPCOMMAND_TREBLE_DOWN            = 22;
+	 int  APPCOMMAND_TREBLE_UP              = 23;
+	 int  APPCOMMAND_MICROPHONE_VOLUME_MUTE = 24;
+	 int  APPCOMMAND_MICROPHONE_VOLUME_DOWN = 25;
+	 int  APPCOMMAND_MICROPHONE_VOLUME_UP   = 26;
+	 int  APPCOMMAND_HELP                   = 27;
+	 int  APPCOMMAND_FIND                   = 28;
+	 int  APPCOMMAND_NEW                    = 29;
+	 int  APPCOMMAND_OPEN                   = 30;
+	 int  APPCOMMAND_CLOSE                  = 31;
+	 int  APPCOMMAND_SAVE                   = 32;
+	 int  APPCOMMAND_PRINT                  = 33;
+	 int  APPCOMMAND_UNDO                   = 34;
+	 int  APPCOMMAND_REDO                   = 35;
+	 int  APPCOMMAND_COPY                   = 36;
+	 int  APPCOMMAND_CUT                    = 37;
+	 int  APPCOMMAND_PASTE                  = 38;
+	 int  APPCOMMAND_REPLY_TO_MAIL          = 39;
+	 int  APPCOMMAND_FORWARD_MAIL           = 40;
+	 int  APPCOMMAND_SEND_MAIL              = 41;
+	 int  APPCOMMAND_SPELL_CHECK            = 42;
+	 int  APPCOMMAND_DICTATE_OR_COMMAND_CONTROL_TOGGLE = 43;
+	 int  APPCOMMAND_MIC_ON_OFF_TOGGLE      = 44;
+	 int  APPCOMMAND_CORRECTION_LIST        = 45;
 
 }

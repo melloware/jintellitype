@@ -1,4 +1,4 @@
-/**
+/*
  * JIntellitype
  * -----------------
  * Copyright 2005-2019 Emil A. Lefkof III, Melloware Inc.
@@ -23,11 +23,7 @@ package com.melloware.jintellitype;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
@@ -97,7 +93,7 @@ public final class JIntellitype implements JIntellitypeConstants {
    /**
     * Handler is used by JNI code to keep different JVM instances separate
     */
-   private final long handler = 0;
+   public final long handler = 0;
 
    /**
     * Map containing key->keycode mapping
@@ -139,8 +135,8 @@ public final class JIntellitype implements JIntellitypeConstants {
                fromJarToFs("com/melloware/jintellitype/windows/" + libraryName, extractedLibrary.getAbsolutePath());
                System.load(extractedLibrary.getAbsolutePath());
            } catch (Throwable exAllFailed) {
-               throw new JIntellitypeException(
-                        "Could not load JIntellitype.dll from local file system or from inside JAR", exAllFailed);
+               String message = String.format("Could not load JIntellitype.dll from local file system (%s) or from inside JAR.", extractedLibrary.getAbsolutePath());
+               throw new JIntellitypeException(message, exAllFailed);
            }
        }
        
@@ -169,7 +165,7 @@ public final class JIntellitype implements JIntellitypeConstants {
              file.getParentFile().mkdirs();
          }
 
-         //is = ClassLoader.getSystemClassLoader().getResourceAsStream(jarPath);
+         is = ClassLoader.getSystemClassLoader().getResourceAsStream(jarPath);
          os = new FileOutputStream(filePath);
          byte[] buffer = new byte[8192];
          int bytesRead;
@@ -259,7 +255,7 @@ public final class JIntellitype implements JIntellitypeConstants {
          if (modifiers == 0) {
             modifiers = modifier;
          }
-         regHotKey(identifier, modifier, keycode);
+         regHotKey(identifier, modifiers, keycode);
       } catch (UnsatisfiedLinkError ex) {
          throw new JIntellitypeException(ERROR_MESSAGE, ex);
       } catch (RuntimeException ex) {
@@ -387,7 +383,8 @@ public final class JIntellitype implements JIntellitypeConstants {
    protected void onHotKey(final int identifier) {
       for (final HotkeyListener hotkeyListener : hotkeyListeners) {
          SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                hotkeyListener.onHotKey(identifier);
             }
          });
@@ -402,7 +399,8 @@ public final class JIntellitype implements JIntellitypeConstants {
    protected void onIntellitype(final int command) {
       for (final IntellitypeListener intellitypeListener : intellitypeListeners) {
          SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                intellitypeListener.onIntellitype(command);
             }
          });
@@ -446,7 +444,7 @@ public final class JIntellitype implements JIntellitypeConstants {
     *         use all keys specified here instead of just [A-Z],[0-9] as before
     */
    private HashMap<String, Integer> getKey2KeycodeMapping() {
-      HashMap<String, Integer> map = new HashMap<String, Integer>();
+      HashMap<String, Integer> map = new HashMap<>();
 
       map.put("first", KeyEvent.KEY_FIRST);
       map.put("last", KeyEvent.KEY_LAST);
