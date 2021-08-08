@@ -46,23 +46,13 @@
 FOR USERS:
 
  The 32/64 bit dlls get extracted automatically.
- 
- Currently does not work on Java 11, probably starting with Java 9. Latest recommended version is Java 8.
 
 FOR DEVELOPERS:
 
 * To build you need [Apache Maven](https://maven.apache.org/) or higher installed from Apache.
   Just run "mvn package" from the directory where the pom.xml is located to build the project.
 
-* To build the C++ code you need [Bloodshed C++ IDE](http://www.bloodshed.net/devcpp.html).
-  When you load the .dev project included do not forget to edit Project->Options and under Directories Tab change the Includes directory to contain.
-
-      both:
-
-        /java5/include
-        /java5/include/win32
-
-      Where "java5" is the location of your Java JDK.
+* To build the C++ code you need Visual Studio C++.
 
 
 ## 4.Quick Usage
