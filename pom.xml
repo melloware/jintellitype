@@ -141,7 +141,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2.1</version>
+				<version>3.3.0</version>
 				<configuration>
 					<archive>
 						<manifest>
