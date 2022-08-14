@@ -165,7 +165,10 @@ public final class JIntellitype implements JIntellitypeConstants {
              file.getParentFile().mkdirs();
          }
 
-         is = ClassLoader.getSystemClassLoader().getResourceAsStream(jarPath);
+         ClassLoader loader = Thread.currentThread().getContextClassLoader();
+         if (loader == null)
+            loader = ClassLoader.getSystemClassLoader();
+         is = loader.getResourceAsStream(jarPath);
          os = new FileOutputStream(filePath);
          byte[] buffer = new byte[8192];
          int bytesRead;
