@@ -4,7 +4,7 @@
  * Copyright 2005-2019 Emil A. Lefkof III, Melloware Inc.
  *
  * I always give it my best shot to make a program useful and solid, but
- * remeber that there is absolutely no warranty for using this program as
+ * remember that there is absolutely no warranty for using this program as
  * stated in the following terms:
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@ public interface HotkeyListener
 	 * Event fired when a WM_HOTKEY message is received that was initiated
 	 * by this application.
 	 * <p>
-	 * @param identifier the unique Identifer the Hotkey was assigned
+	 * @param identifier the unique Identifier the Hotkey was assigned
 	 */
 	void onHotKey( int identifier );
 }
