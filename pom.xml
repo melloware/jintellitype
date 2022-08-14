@@ -3,7 +3,7 @@
 	<groupId>com.melloware</groupId>
 	<artifactId>jintellitype</artifactId>
 	<packaging>jar</packaging>
-	<version>1.4.1-SNAPSHOT</version>
+	<version>1.4.1</version>
 	<url>http://www.melloware.com</url>
 	<name>JIntellitype</name>
 	<description>JIntellitype - JNI Java bridge to Microsoft Intellitype commands.</description>
@@ -161,7 +161,7 @@
 						<phase>package</phase>
 						<!-- append to the packaging phase. -->
 						<goals>
-							<goal>assembly</goal>
+							<goal>single</goal>
 							<!-- goals == mojos -->
 						</goals>
 					</execution>
