@@ -4,7 +4,7 @@
  * Copyright 2005-2019 Emil A. Lefkof III, Melloware Inc.
  *
  * I always give it my best shot to make a program useful and solid, but
- * remeber that there is absolutely no warranty for using this program as
+ * remember that there is absolutely no warranty for using this program as
  * stated in the following terms:
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

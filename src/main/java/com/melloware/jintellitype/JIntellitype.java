@@ -4,7 +4,7 @@
  * Copyright 2005-2019 Emil A. Lefkof III, Melloware Inc.
  *
  * I always give it my best shot to make a program useful and solid, but
- * remeber that there is absolutely no warranty for using this program as
+ * remember that there is absolutely no warranty for using this program as
  * stated in the following terms:
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,12 +64,12 @@ public final class JIntellitype implements JIntellitypeConstants {
    private static JIntellitype jintellitype = null;
 
    /**
-    * Static variable for double checked thread safety.
+    * Static variable for double-checked thread safety.
     */
-   private static boolean isInitialized = false;
+   private static volatile boolean isInitialized = false;
 
    /**
-    * Static variable to hold the libary location if set
+    * Static variable to hold the library location if set
     */
    private static String libraryLocation = null;
    
@@ -155,17 +155,19 @@ public final class JIntellitype implements JIntellitypeConstants {
       OutputStream os = null;
       try {
          File file = new File(filePath);
-         if (file.exists()) {
-            boolean success = file.delete();
-            if (!success) {
-               throw new IOException("Could not delete file: " + filePath);
-            }
+         if (file.exists() && !file.delete()) {
+            throw new IOException("Could not delete file: " + filePath);
          }
-         if (!file.getParentFile().exists()) {
-             file.getParentFile().mkdirs();
+         if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
+            throw new IOException("Could not create dirs for file: " + filePath);
          }
 
-         is = ClassLoader.getSystemClassLoader().getResourceAsStream(jarPath);
+         ClassLoader loader = Thread.currentThread().getContextClassLoader();
+         if (loader == null)
+            loader = ClassLoader.getSystemClassLoader();
+         is = loader.getResourceAsStream(jarPath);
+         if (is == null)
+            throw new IOException("Could not find dll resource in JAR");
          os = new FileOutputStream(filePath);
          byte[] buffer = new byte[8192];
          int bytesRead;
@@ -333,7 +335,7 @@ public final class JIntellitype implements JIntellitypeConstants {
     * Unregisters a previously registered Hotkey identified by its unique
     * identifier.
     * <p>
-    * @param identifier the unique identifer of this Hotkey
+    * @param identifier the unique identifier of this Hotkey
     */
    public void unregisterHotKey(int identifier) {
       try {
