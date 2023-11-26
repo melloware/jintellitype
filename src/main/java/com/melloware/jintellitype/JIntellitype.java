@@ -158,7 +158,7 @@ public final class JIntellitype implements JIntellitypeConstants {
 
    private static void loadMacLibrary() {
       boolean isArm = System.getProperty("os.arch", "unknown").equals("aarch64");
-      String libraryName = "libJIntellitype.dylib";
+      String libraryName = "libJIntellitype-" + (isArm ? "aarch64" : "x64") + ".dylib";
       File extractedLibrary = getPathToStaticLibrary(libraryName);
       try {
          System.load(extractedLibrary.getAbsolutePath());
