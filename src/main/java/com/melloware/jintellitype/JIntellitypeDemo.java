@@ -54,10 +54,9 @@ public class JIntellitypeDemo extends JFrame implements HotkeyListener, Intellit
 	private static final int ALT_SHIFT_B = 89;
 	private static final int CTRL_SHIFT_C = 90;
 	private static final int PRINT_SCREEN = 91;
-	private static final int F11 = 92;
+	private static final int F9 = 92;
 	private static final int F12 = 93;
 	private static final int SEMICOLON = 94;
-	private static final int TICK = 95;
 	private final JButton btnRegisterHotKey = new JButton();
 	private final JButton btnUnregisterHotKey = new JButton();
 	private final JPanel bottomPanel = new JPanel();
@@ -84,12 +83,14 @@ public class JIntellitypeDemo extends JFrame implements HotkeyListener, Intellit
 		// first check to see if an instance of this application is already
 		// running, use the name of the window title of this JFrame for checking
 		if (JIntellitype.checkInstanceAlreadyRunning("JIntellitype Test Application")) {
+			System.err.println("A JIntellitype instance is already registered.");
 			System.exit(1);
 		}
 
-		// next check to make sure JIntellitype DLL can be found and we are on
-		// a Windows operating System
-		if (!JIntellitype.isJIntellitypeSupported()) {
+		// next check to make sure JIntellitype is supported
+		String osType = JIntellitype.getOsType();
+		if (!JIntellitype.isJIntellitypeSupported(osType)) {
+			System.err.println("Your system is not supported");
 			System.exit(1);
 		}
 
@@ -203,27 +204,32 @@ public class JIntellitypeDemo extends JFrame implements HotkeyListener, Intellit
 	 */
 	private void btnRegisterHotKey_actionPerformed(ActionEvent aEvent) {
 		// assign the WINDOWS+A key to the unique id 88 for identification
-		JIntellitype.getInstance().registerHotKey(WINDOWS_A, JIntellitype.MOD_WIN, 'A');
-		JIntellitype.getInstance().registerHotKey(ALT_SHIFT_B, JIntellitype.MOD_ALT + JIntellitype.MOD_SHIFT, 'B');
-		JIntellitype.getInstance().registerSwingHotKey(CTRL_SHIFT_C, Event.CTRL_MASK + Event.SHIFT_MASK, 'C');
+		JIntellitype.getInstance().registerHotKey(WINDOWS_A, JIntellitype.MOD_META, 'A');
+		JIntellitype.getInstance().registerHotKey(ALT_SHIFT_B, JIntellitype.MOD_ALT_OR_OPTION + JIntellitype.MOD_SHIFT, 'B');
+		JIntellitype.getInstance().registerHotKey(CTRL_SHIFT_C, JIntellitypeConstants.MOD_CONTROL + JIntellitypeConstants.MOD_SHIFT, 'C');
 
 		// use a 0 for the modifier if you just want a single keystroke to be a
 		// hotkey
-		JIntellitype.getInstance().registerHotKey(PRINT_SCREEN, 0, 44);
-		JIntellitype.getInstance().registerHotKey(F11, "F11");
-		JIntellitype.getInstance().registerHotKey(F12, JIntellitype.MOD_ALT, 123);
+
+		if (JIntellitype.getOsType().startsWith("windows")) {
+			JIntellitype.getInstance().registerHotKey(PRINT_SCREEN, 0, 44);
+		}
+		JIntellitype.getInstance().registerHotKey(F9, "F9");
+		JIntellitype.getInstance().registerHotKey(F12, JIntellitype.MOD_ALT_OR_OPTION, 123);
 		JIntellitype.getInstance().registerHotKey(SEMICOLON, 0, 186);
-		JIntellitype.getInstance().registerHotKey(TICK, 0, 192);
+
 		// clear the text area
 		textArea.setText("");
-		output("RegisterHotKey WINDOWS+A was assigned uniqueID 88");
-		output("RegisterHotKey ALT+SHIFT+B was assigned uniqueID 89");
-		output("RegisterHotKey CTRL+SHIFT+C was assigned uniqueID 90");
-		output("RegisterHotKey PRINT_SCREEN was assigned uniqueID 91");
-		output("RegisterHotKey F9 was assigned uniqueID 92");
-		output("RegisterHotKey F12 was assigned uniqueID 93");
-		output("RegisterHotKey SEMICOLON was assigned uniqueID 94");
-		output("Press WINDOWS+A or ALT+SHIFT+B or CTRL+SHIFT+C in another application and you will see the debug output in the textarea.");
+		output("RegisterHotKey WINDOWS/COMMAND+A was assigned uniqueID " + WINDOWS_A);
+		output("RegisterHotKey ALT/OPT+SHIFT+B was assigned uniqueID " + ALT_SHIFT_B);
+		output("RegisterHotKey CTRL+SHIFT+C was assigned uniqueID " + CTRL_SHIFT_C);
+		if (JIntellitype.getOsType().startsWith("windows")) {
+			output("RegisterHotKey PRINT_SCREEN was assigned uniqueID 91");
+		}
+		output("RegisterHotKey F9 was assigned uniqueID " + F9);
+		output("RegisterHotKey ALT/OPT+F12 was assigned uniqueID " + F12);
+		output("RegisterHotKey SEMICOLON was assigned uniqueID " + SEMICOLON);
+		output("Press WINDOWS/COMMAND+A or ALT/OPT+SHIFT+B or CTRL+SHIFT+C in another application and you will see the debug output in the textarea.");
 	}
 
 	/**
@@ -237,7 +243,7 @@ public class JIntellitypeDemo extends JFrame implements HotkeyListener, Intellit
 		JIntellitype.getInstance().unregisterHotKey(ALT_SHIFT_B);
 		JIntellitype.getInstance().unregisterHotKey(CTRL_SHIFT_C);
 		JIntellitype.getInstance().unregisterHotKey(PRINT_SCREEN);
-		JIntellitype.getInstance().unregisterHotKey(F11);
+		JIntellitype.getInstance().unregisterHotKey(F9);
 		JIntellitype.getInstance().unregisterHotKey(F12);
 		JIntellitype.getInstance().unregisterHotKey(SEMICOLON);
 		output("UnregisterHotKey WINDOWS+A");
@@ -292,7 +298,7 @@ public class JIntellitypeDemo extends JFrame implements HotkeyListener, Intellit
 	}
 
 	/**
-	 * Initialize the JInitellitype library making sure the DLL is located.
+	 * Initialize the JIntellitype library making sure the DLL is located.
 	 */
 	public void initJIntellitype() {
 		try {

@@ -38,9 +38,9 @@ public interface JIntellitypeConstants {
 	// Modifier keys, can be added together
 	
 	/**
-	 * ALT key for registering Hotkeys.
+	 * ALT or OPTION key for registering Hotkeys.
 	 */
-	 int MOD_ALT = 1;
+	 int MOD_ALT_OR_OPTION = 1;
 	
 	/**
 	 * CONTROL key for registering Hotkeys.
@@ -53,9 +53,9 @@ public interface JIntellitypeConstants {
 	 int MOD_SHIFT = 4;
 	
 	/**
-	 * WINDOWS key for registering Hotkeys.
+	 * WINDOWS key or COMMAND key for registering Hotkeys.
 	 */
-	 int MOD_WIN = 8;
+	 int MOD_META = 8;
 	
 	
 	// Intellitype Virtual Key Constants from MSDN  
