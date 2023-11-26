@@ -2,7 +2,7 @@
 [![Javadocs](http://javadoc.io/badge/com.melloware/jintellitype.svg)](https://javadoc.io/doc/com.melloware/jintellitype)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-# JIntellitype
+# JIntellitype-Multiplatform
 
 [![JIntellitype Logo](https://github.com/melloware/jintellitype/blob/master/src/test/resources/jintellitype.png?raw=true)](https://melloware.com)
 
@@ -19,7 +19,7 @@
 
 ## 1. Overview
 
-   JIntellitype is an API for interacting with Microsoft Intellitype keyboard commands as well as registering for Global Hotkeys in your application.
+   JIntellitype-Multiplatform is an API for interacting with Microsoft Intellitype keyboard commands as well as registering for Global Hotkeys in your application.
    The API is a Java JNI library that uses a DLL to do all the communication with Windows, and uses a dynamic library to do the communication with macOS.
    This library works on Windows and macOS.
 
