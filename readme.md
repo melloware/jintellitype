@@ -45,7 +45,7 @@
 
 FOR USERS:
 
- The 32/64 bit dlls get extracted automatically.
+ The 32/64 bit dlls or dylibs get extracted automatically.
 
 FOR DEVELOPERS:
 
@@ -98,17 +98,16 @@ FOR DEVELOPERS:
 Example with [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/):
 
 ```kotlin
-key(true) {
-  DisposableEffect(Unit) {
-    val listener = HotkeyListener { println("Hot key pressed") }
-    JIntellitype.getInstance().addHotKeyListener(listener)
-    JIntellitype.getInstance().registerHotKey(1, "COMMAND+PERIOD")
+DisposableEffect(Unit) {
+  val listener = HotkeyListener { println("Hotkey pressed") }
+  JIntellitype.getInstance().addHotKeyListener(listener)
+  JIntellitype.getInstance().registerHotKey(1, "COMMAND+PERIOD")
 
-    onDispose {
-        JIntellitype.getInstance().removeHotKeyListener(listener)
-    }
+  onDispose {
+    JIntellitype.getInstance().removeHotKeyListener(listener)
   }
 }
+
 ```
 
 See demo at [JIntellitype Demo Application](https://github.com/snowbagoly/jintellitype-multiplatform/blob/master/src/main/java/com/melloware/jintellitype/JIntellitypeDemo.java)  for more info.
