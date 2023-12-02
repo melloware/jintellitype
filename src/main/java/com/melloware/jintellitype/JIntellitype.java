@@ -505,8 +505,8 @@ public final class JIntellitype implements JIntellitypeConstants {
       map.put("right", KeyEvent.VK_RIGHT);
       map.put("down", KeyEvent.VK_DOWN);
       map.put("comma", 188);
-      map.put("minus", 109);
-      map.put("period", 110);
+      map.put("minus", 189);
+      map.put("period", 190);
       map.put("slash", 191);
       map.put("accent `", 192);
       map.put("0", KeyEvent.VK_0);

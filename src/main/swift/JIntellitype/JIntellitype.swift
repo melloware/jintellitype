@@ -132,8 +132,8 @@ private func getKeyFromJint(keyAsJint: jint) -> Key {
     case 103: return .keypad7
     case 104: return .keypad8
     case 105: return .keypad9
-    case 109: return .minus
-    case 110: return .period
+    case 109: return .keypadMinus
+    case 110: return .keypadDecimal
     case 112: return .f1
     case 113: return .f2
     case 114: return .f3
@@ -149,6 +149,8 @@ private func getKeyFromJint(keyAsJint: jint) -> Key {
     case 186: return .semicolon
     case 187: return .equal
     case 188: return .comma
+    case 189: return .minus
+    case 190: return .period
     case 191: return .slash
     case 219: return .leftBracket
     case 220: return .backslash
