@@ -54,6 +54,8 @@ public final class JIntellitype implements JIntellitypeConstants {
 
     // for unit-testing only:
     static boolean isDllLoaded = false;
+
+    static boolean isDylibLoaded = false;
     static {
         loadLibrary();
     }
@@ -67,11 +69,6 @@ public final class JIntellitype implements JIntellitypeConstants {
     * Static variable for double-checked thread safety.
     */
    private static volatile boolean isInitialized = false;
-
-   /**
-    * Static variable to hold the library location if set
-    */
-   private static String libraryLocation = null;
    
    /**
     * Static variable to hold InputStream for the library
@@ -112,35 +109,70 @@ public final class JIntellitype implements JIntellitypeConstants {
    }
 
    private static void loadLibrary() {
+
+      String osType = getOsType();
        
-       if (!isJIntellitypeSupported()) {
+       if (!isJIntellitypeSupported(osType)) {
            return;
        }
-       
-       boolean is64bit = System.getProperty("os.arch", "unknown").contains("64");
-       String libraryName = is64bit ? "JIntellitype64.dll" : "JIntellitype.dll";
-       File configDir = Paths.get(System.getProperty("user.home", ""), "AppData", "Local").toFile();
-       if (!configDir.exists()) {
-           configDir = new File(System.getProperty("java.io.tmpdir", System.getProperty("user.dir", "")));
+
+       if (osType.startsWith("windows")) {
+          loadWindowsLibrary();
+          return;
        }
-       
-       File extractedLibrary = Paths.get(configDir.getAbsolutePath(), "jintellitype", Main.getProjectVersion(),
-           libraryName)
-           .toFile();
-       
-       try {
-           System.load(extractedLibrary.getAbsolutePath());
-       } catch (Throwable throwable) {
-           try {
-               fromJarToFs("com/melloware/jintellitype/windows/" + libraryName, extractedLibrary.getAbsolutePath());
-               System.load(extractedLibrary.getAbsolutePath());
-           } catch (Throwable exAllFailed) {
-               String message = String.format("Could not load JIntellitype.dll from local file system (%s) or from inside JAR.", extractedLibrary.getAbsolutePath());
-               throw new JIntellitypeException(message, exAllFailed);
-           }
+
+       if (osType.startsWith("mac")) {
+          loadMacLibrary();
        }
-       
-       isDllLoaded = true;
+   }
+
+   private static File getPathToStaticLibrary(String libraryName) {
+      File configDir = Paths.get(System.getProperty("user.home", ""), "AppData", "Local").toFile();
+      if (!configDir.exists()) {
+         configDir = new File(System.getProperty("java.io.tmpdir", System.getProperty("user.dir", "")));
+      }
+
+       return Paths.get(configDir.getAbsolutePath(), "jintellitype", Main.getProjectVersion(),
+                      libraryName)
+              .toFile();
+   }
+
+   private static void loadWindowsLibrary() {
+      boolean is64bit = System.getProperty("os.arch", "unknown").contains("64");
+      String libraryName = is64bit ? "JIntellitype64.dll" : "JIntellitype.dll";
+      File extractedLibrary = getPathToStaticLibrary(libraryName);
+      try {
+         System.load(extractedLibrary.getAbsolutePath());
+      } catch (Throwable throwable) {
+         try {
+            fromJarToFs("com/melloware/jintellitype/windows/" + libraryName, extractedLibrary.getAbsolutePath());
+            System.load(extractedLibrary.getAbsolutePath());
+         } catch (Throwable exAllFailed) {
+            String message = String.format("Could not load JIntellitype.dll from local file system (%s) or from inside JAR.", extractedLibrary.getAbsolutePath());
+            throw new JIntellitypeException(message, exAllFailed);
+         }
+      }
+
+      isDllLoaded = true;
+   }
+
+   private static void loadMacLibrary() {
+      boolean isArm = System.getProperty("os.arch", "unknown").equals("aarch64");
+      String libraryName = "libJIntellitype-" + (isArm ? "aarch64" : "x64") + ".dylib";
+      File extractedLibrary = getPathToStaticLibrary(libraryName);
+      try {
+         System.load(extractedLibrary.getAbsolutePath());
+      } catch (Throwable throwable) {
+         try {
+            fromJarToFs("com/melloware/jintellitype/mac/" + libraryName, extractedLibrary.getAbsolutePath());
+            System.load(extractedLibrary.getAbsolutePath());
+         } catch (Throwable exAllFailed) {
+            String message = String.format("Could not load libJIntellitype.dylib from local file system (%s) or from inside JAR.", extractedLibrary.getAbsolutePath());
+            throw new JIntellitypeException(message, exAllFailed);
+         }
+      }
+
+      isDylibLoaded = true;
    }
 
    /**
@@ -167,7 +199,7 @@ public final class JIntellitype implements JIntellitypeConstants {
             loader = ClassLoader.getSystemClassLoader();
          is = loader.getResourceAsStream(jarPath);
          if (is == null)
-            throw new IOException("Could not find dll resource in JAR");
+            throw new IOException("Could not find resource in JAR");
          os = new FileOutputStream(filePath);
          byte[] buffer = new byte[8192];
          int bytesRead;
@@ -175,7 +207,7 @@ public final class JIntellitype implements JIntellitypeConstants {
             os.write(buffer, 0, bytesRead);
          }
       } catch (Exception ex) {
-         throw new IOException("FromJarToFileSystem could not load DLL: " + jarPath, ex);
+         throw new IOException("FromJarToFileSystem could not load library: " + jarPath, ex);
       } finally {
          if (is != null) {
             is.close();
@@ -247,7 +279,7 @@ public final class JIntellitype implements JIntellitypeConstants {
     * ALT, CTRL, and WINDOWS keys.
     * <p>
     * @param identifier a unique identifier for this key combination
-    * @param modifier MOD_SHIFT, MOD_ALT, MOD_CONTROL, MOD_WIN from
+    * @param modifier MOD_SHIFT, MOD_ALT, MOD_CONTROL, MOD_META from
     *           JIntellitypeConstants, or 0 if no modifier needed
     * @param keycode the key to respond to in Ascii integer, 65 for A
     */
@@ -287,8 +319,8 @@ public final class JIntellitype implements JIntellitypeConstants {
 
    /**
     * Registers a Hotkey with windows. This combination will be responded to by
-    * all registered HotKeyListeners. Use the identifiers CTRL, SHIFT, ALT
-    * and/or WIN.
+    * all registered HotKeyListeners. Use the identifiers CTRL, SHIFT, ALT, OPT,
+    * WIN, CMD and/or META.
     * <p>
     * @param identifier a unique identifier for this key combination
     * @param modifierAndKeyCode String with modifiers separated by + and keycode
@@ -297,19 +329,19 @@ public final class JIntellitype implements JIntellitypeConstants {
     * @see #registerSwingHotKey(int, int, int)
     */
    public void registerHotKey(int identifier, String modifierAndKeyCode) {
-      String[] split = modifierAndKeyCode.split("\\+");
+      String[] split = modifierAndKeyCode.split("\\s*\\+\\s*");
       int mask = 0;
       int keycode = 0;
 
       for (int i = 0; i < split.length; i++) {
-         if ("ALT".equalsIgnoreCase(split[i])) {
-            mask += JIntellitype.MOD_ALT;
+         if ("ALT".equalsIgnoreCase(split[i]) || "OPT".equalsIgnoreCase(split[i]) || "OPTION".equalsIgnoreCase(split[i])) {
+            mask += JIntellitype.MOD_ALT_OR_OPTION;
          } else if ("CTRL".equalsIgnoreCase(split[i]) || "CONTROL".equalsIgnoreCase(split[i])) {
             mask += JIntellitype.MOD_CONTROL;
          } else if ("SHIFT".equalsIgnoreCase(split[i])) {
             mask += JIntellitype.MOD_SHIFT;
-         } else if ("WIN".equalsIgnoreCase(split[i])) {
-            mask += JIntellitype.MOD_WIN;
+         } else if ("WIN".equalsIgnoreCase(split[i]) || "CMD".equalsIgnoreCase(split[i]) || "COMMAND".equalsIgnoreCase(split[i]) || "META".equalsIgnoreCase(split[i])) {
+            mask += JIntellitype.MOD_META;
          } else if (keycodeMap.containsKey(split[i].toLowerCase())) {
             keycode = keycodeMap.get(split[i].toLowerCase());
          }
@@ -357,13 +389,7 @@ public final class JIntellitype implements JIntellitypeConstants {
       return getInstance().isRunning(appTitle);
    }
 
-   /**
-    * Checks to make sure the OS is a Windows flavor and that the JIntellitype
-    * DLL is found in the path. 32 and 64 bit DLL's now supported!
-    * <p>
-    * @return true if Jintellitype may be used, false if not
-    */
-   public static boolean isJIntellitypeSupported() {
+   public static String getOsType() {
       String os = "none";
 
       try {
@@ -371,10 +397,18 @@ public final class JIntellitype implements JIntellitypeConstants {
       } catch (SecurityException ex) {
          // we are not allowed to look at this property
          System.err.println("Caught a SecurityException reading the system property "
-                  + "'os.name'; the SystemUtils property value will default to null.");
+                 + "'os.name'; the SystemUtils property value will default to null.");
       }
+      return os;
+   }
 
-      return os.startsWith("windows");
+   /**
+    * Checks to make sure the OS is either Windows or Mac.
+    * <p>
+    * @return true if Jintellitype may be used, false if not
+    */
+   public static boolean isJIntellitypeSupported(String os) {
+      return os.startsWith("windows") || os.startsWith("mac");
    }
 
    /**
@@ -425,7 +459,7 @@ public final class JIntellitype implements JIntellitypeConstants {
       }
       if ((swingKeystrokeModifier & InputEvent.ALT_DOWN_MASK) == InputEvent.ALT_DOWN_MASK
                || (swingKeystrokeModifier & InputEvent.ALT_DOWN_MASK) == InputEvent.ALT_DOWN_MASK) {
-         mask |= JIntellitypeConstants.MOD_ALT;
+         mask |= JIntellitypeConstants.MOD_ALT_OR_OPTION;
       }
       if ((swingKeystrokeModifier & InputEvent.CTRL_DOWN_MASK) == InputEvent.CTRL_DOWN_MASK
                || (swingKeystrokeModifier & InputEvent.CTRL_DOWN_MASK) == InputEvent.CTRL_DOWN_MASK) {
@@ -433,7 +467,7 @@ public final class JIntellitype implements JIntellitypeConstants {
       }
       if ((swingKeystrokeModifier & InputEvent.META_DOWN_MASK) == InputEvent.META_DOWN_MASK
                || (swingKeystrokeModifier & InputEvent.META_DOWN_MASK) == InputEvent.META_DOWN_MASK) {
-         mask |= JIntellitypeConstants.MOD_WIN;
+         mask |= JIntellitypeConstants.MOD_META;
       }
 
       return mask;
@@ -471,8 +505,8 @@ public final class JIntellitype implements JIntellitypeConstants {
       map.put("right", KeyEvent.VK_RIGHT);
       map.put("down", KeyEvent.VK_DOWN);
       map.put("comma", 188);
-      map.put("minus", 109);
-      map.put("period", 110);
+      map.put("minus", 189);
+      map.put("period", 190);
       map.put("slash", 191);
       map.put("accent `", 192);
       map.put("0", KeyEvent.VK_0);
