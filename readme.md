@@ -6,6 +6,11 @@
 
 [![JIntellitype Logo](https://github.com/melloware/jintellitype/blob/master/src/test/resources/jintellitype.png?raw=true)](https://melloware.com)
 
+**If you like this project, please consider supporting me ❤️**
+
+[![GitHub Sponsor](https://img.shields.io/badge/GitHub-FFDD00?style=for-the-badge&logo=github&logoColor=black)](https://github.com/sponsors/melloware)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.me/mellowareinc)
+
 ## Contents
 
 1. Overview
