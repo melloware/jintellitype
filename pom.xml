@@ -250,7 +250,7 @@
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<groupId>org.apache.maven.plugins</groupId>
-				<version>3.2.5</version>
+				<version>3.3.0</version>
 				<configuration>
 					<skip>true</skip>
 				</configuration>
