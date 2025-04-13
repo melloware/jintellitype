@@ -12,7 +12,8 @@
 
 JIntellitype is a Java JNI library that provides an interface to Microsoft Intellitype keyboard commands and global hotkey registration in Windows applications. The library enables Java applications to respond to special media keys (Play, Pause, Stop, etc.) and register global hotkey combinations.
 
-**Note: This library is Windows-only as it uses Windows-specific API calls.**
+> [!NOTE]
+> This library is Windows-only as it uses Windows-specific API calls.
 
 **If you like this project, please consider supporting me ❤️**
 
