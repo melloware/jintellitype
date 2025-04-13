@@ -25,8 +25,7 @@ package com.melloware.jintellitype;
 /**
  * Exception class for all JIntellitype Exceptions.
  * <p>
- * Copyright (c) 1999-2019 Melloware, Inc. <http://www.melloware.com>
- * @author Emil A. Lefkof III <mellowaredev@gmail.com>
+ * Copyright (c) 1999-2025 Melloware, Inc. <a href="http://www.melloware.com">Melloware</a>
  * @version 1.4.0
  */
 public class JIntellitypeException extends RuntimeException {

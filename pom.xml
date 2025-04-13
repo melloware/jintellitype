@@ -2,34 +2,20 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.melloware</groupId>
 	<artifactId>jintellitype</artifactId>
+	<version>1.5.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<version>1.4.2-SNAPSHOT</version>
-	<url>http://www.melloware.com</url>
 	<name>JIntellitype</name>
 	<description>JIntellitype - JNI Java bridge to Microsoft Intellitype commands.</description>
+	<url>https://www.melloware.com</url>
+	<inceptionYear>1999</inceptionYear>
 	<organization>
 		<name>Melloware Inc</name>
-		<url>http://www.melloware.com</url>
+		<url>https://www.melloware.com</url>
 	</organization>
-	<properties>
-		<organization.logo>http://melloware.com/images/header.jpg</organization.logo>
-		<default.encoding>UTF-8</default.encoding>
-		<project.build.sourceEncoding>${default.encoding}</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>${default.encoding}</project.reporting.outputEncoding>
-		<maven.compiler.plugin.encoding>${default.encoding}</maven.compiler.plugin.encoding>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
-	</properties>
-	<inceptionYear>1999</inceptionYear>
-	<scm>
-		<connection>scm:svn:https://jintellitype.googlecode.com/svn/trunk</connection>
-		<developerConnection>scm:svn:https://jintellitype.googlecode.com/svn/trunk</developerConnection>
-		<url>scm:svn:https://jintellitype.googlecode.com/svn/trunk</url>
-	</scm>
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
 	<developers>
@@ -37,9 +23,9 @@
 			<id>mellowaredev@gmail.com</id>
 			<name>Melloware</name>
 			<email>mellowaredev@gmail.com</email>
-			<url>http://www.melloware.com</url>
+			<url>https://www.melloware.com</url>
 			<organization>Melloware Inc</organization>
-			<organizationUrl>http://www.melloware.com</organizationUrl>
+			<organizationUrl>https://www.melloware.com</organizationUrl>
 			<roles>
 				<role>Architect</role>
 			</roles>
@@ -49,7 +35,7 @@
 		<contributor>
 			<name>Bertrand Florat</name>
 			<email>bflorat@users.sourceforge.net</email>
-			<url>http://jajuk.info</url>
+			<url>https://jajuk.info</url>
 			<organization>Jajuk Team</organization>
 			<organizationUrl>http://jajuk.info</organizationUrl>
 			<roles>
@@ -59,36 +45,36 @@
 		<contributor>
 			<name>Peter Fichtner</name>
 			<email>fichtner@c2tn.de</email>
-			<url>http://www.c2tn.de</url>
+			<url>https://www.c2tn.de</url>
 			<organization>C2TN Team</organization>
-			<organizationUrl>http://www.c2tn.de</organizationUrl>
+			<organizationUrl>https://www.c2tn.de</organizationUrl>
 			<roles>
 				<role>Code Contributor</role>
 			</roles>
 		</contributor>
 		<contributor>
 			<name>Thomas Beckers</name>
-			<email />
-			<url>http://www.atunes.org/</url>
+			<email/>
+			<url>https://www.atunes.org/</url>
 			<organization>aTunes Team</organization>
-			<organizationUrl>http://www.atunes.org/</organizationUrl>
+			<organizationUrl>https://www.atunes.org/</organizationUrl>
 			<roles>
 				<role>Code Contributor</role>
 			</roles>
 		</contributor>
 		<contributor>
 			<name>Karl von Randow</name>
-			<email />
-			<url>http://xk72.com/</url>
+			<email/>
+			<url>https://xk72.com/</url>
 			<organization>XK72</organization>
-			<organizationUrl>http://xk72.com/</organizationUrl>
+			<organizationUrl>https://xk72.com/</organizationUrl>
 			<roles>
 				<role>Code Contributor</role>
 			</roles>
 		</contributor>
 		<contributor>
 			<name>Johannes Frank</name>
-			<email />
+			<email/>
 			<url>http://radis.sf.net/</url>
 			<organization>RadiS</organization>
 			<organizationUrl>http://radis.sf.net/</organizationUrl>
@@ -98,30 +84,30 @@
 		</contributor>
 		<contributor>
 			<name>Wordoholic</name>
-			<email />
-			<url>http://wordoholic.com/</url>
+			<email/>
+			<url>https://wordoholic.com/</url>
 			<organization>Wordoholic</organization>
-			<organizationUrl>http://wordoholic.com/</organizationUrl>
+			<organizationUrl>https://wordoholic.com/</organizationUrl>
 			<roles>
 				<role>Code Contributor</role>
 			</roles>
 		</contributor>
 		<contributor>
 			<name>Zeroflag</name>
-			<email />
-			<url />
+			<email/>
+			<url/>
 			<organization>ZeroFlag</organization>
-			<organizationUrl />
+			<organizationUrl/>
 			<roles>
 				<role>x64 DLL Contributor</role>
 			</roles>
 		</contributor>
 		<contributor>
 			<name>Lars</name>
-			<email />
-			<url />
+			<email/>
+			<url/>
 			<organization>Hamburg</organization>
-			<organizationUrl />
+			<organizationUrl/>
 			<roles>
 				<role>Strings for Register Hotkeys</role>
 			</roles>
@@ -130,16 +116,38 @@
 			<name>Rocket</name>
 			<email>ma2014119@outlook.com</email>
 			<url>https://github.com/RocketMaDev</url>
-			<organization />
-			<organizationUrl />
+			<organization/>
+			<organizationUrl/>
 			<roles>
 				<role>Make it usable above JDK 9</role>
 			</roles>
 		</contributor>
 	</contributors>
+	<scm>
+		<connection>scm:svn:https://jintellitype.googlecode.com/svn/trunk</connection>
+		<developerConnection>scm:svn:https://jintellitype.googlecode.com/svn/trunk</developerConnection>
+		<url>scm:svn:https://jintellitype.googlecode.com/svn/trunk</url>
+	</scm>
+	<properties>
+		<organization.logo>https://melloware.com/images/header.jpg</organization.logo>
+		<default.encoding>UTF-8</default.encoding>
+		<project.build.sourceEncoding>${default.encoding}</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${default.encoding}</project.reporting.outputEncoding>
+		<maven.compiler.plugin.encoding>${default.encoding}</maven.compiler.plugin.encoding>
+		<maven.compiler.release>8</maven.compiler.release>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>3.7.1</version>
 				<configuration>
@@ -180,7 +188,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.11.2</version>
 				<configuration>
-					<source>${maven.compiler.source}</source>
+					<source>${maven.compiler.release}</source>
 					<detectJavaApiLink>false</detectJavaApiLink>
 					<quiet>true</quiet>
 					<doclint>none</doclint>
@@ -219,6 +227,7 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.4.2</version>
 				<configuration>
@@ -256,6 +265,7 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>3.5.3</version>
 				<executions>
@@ -292,21 +302,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.14.0</version>
-				<configuration>
-					<source>7</source>
-					<target>7</target>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 	<reporting>
 		<plugins>
 			<plugin>
@@ -337,7 +335,6 @@
 				<configuration>
 					<encoding>UTF-8</encoding>
 					<show>private</show>
-					<aggregate>false</aggregate>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -357,9 +354,7 @@
 						<ruleset>/rulesets/strings.xml</ruleset>
 					</rulesets>
 					<minimumTokens>150</minimumTokens>
-					<linkXref>true</linkXref>
-					<sourceEncoding>utf-8</sourceEncoding>
-					<targetJdk>1.6</targetJdk>
+					<targetJdk>${maven.compiler.release}</targetJdk>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -376,16 +371,6 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
 	<profiles>
 		<profile>
 			<id>release</id>
@@ -398,14 +383,13 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.7.0</version>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
+						<version>0.7.0</version>
 						<extensions>true</extensions>
 						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+							<publishingServerId>central-publisher</publishingServerId>
+							<autoPublish>true</autoPublish>
 						</configuration>
 					</plugin>
 					<plugin>

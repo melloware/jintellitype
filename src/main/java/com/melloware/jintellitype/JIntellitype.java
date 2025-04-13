@@ -24,6 +24,7 @@ package com.melloware.jintellitype;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
@@ -46,8 +47,7 @@ import javax.swing.SwingUtilities;
  * C:/WINDOWS/SYSTEM or in your current directory
  * <p>
  * <p>
- * Copyright (c) 1999-2019 Melloware, Inc. <http://www.melloware.com>
- * @author Emil A. Lefkof III <mellowaredev@gmail.com>
+ * Copyright (c) 1999-2025 Melloware, Inc. <a href="http://www.melloware.com">Melloware</a>
  * @version 1.4.0
  */
 public final class JIntellitype implements JIntellitypeConstants {
@@ -82,13 +82,13 @@ public final class JIntellitype implements JIntellitypeConstants {
     * Listeners collection for Hotkey events
     */
    private final List<HotkeyListener> hotkeyListeners = Collections
-            .synchronizedList(new CopyOnWriteArrayList<HotkeyListener>());
+            .synchronizedList(new CopyOnWriteArrayList<>());
 
    /**
     * Listeners collection for Hotkey events
     */
    private final List<IntellitypeListener> intellitypeListeners = Collections
-            .synchronizedList(new CopyOnWriteArrayList<IntellitypeListener>());
+            .synchronizedList(new CopyOnWriteArrayList<>());
 
    /**
     * Handler is used by JNI code to keep different JVM instances separate
@@ -168,7 +168,7 @@ public final class JIntellitype implements JIntellitypeConstants {
          is = loader.getResourceAsStream(jarPath);
          if (is == null)
             throw new IOException("Could not find dll resource in JAR");
-         os = new FileOutputStream(filePath);
+         os = Files.newOutputStream(Paths.get(filePath));
          byte[] buffer = new byte[8192];
          int bytesRead;
          while ((bytesRead = is.read(buffer)) != -1) {
@@ -301,19 +301,19 @@ public final class JIntellitype implements JIntellitypeConstants {
       int mask = 0;
       int keycode = 0;
 
-      for (int i = 0; i < split.length; i++) {
-         if ("ALT".equalsIgnoreCase(split[i])) {
-            mask += JIntellitype.MOD_ALT;
-         } else if ("CTRL".equalsIgnoreCase(split[i]) || "CONTROL".equalsIgnoreCase(split[i])) {
-            mask += JIntellitype.MOD_CONTROL;
-         } else if ("SHIFT".equalsIgnoreCase(split[i])) {
-            mask += JIntellitype.MOD_SHIFT;
-         } else if ("WIN".equalsIgnoreCase(split[i])) {
-            mask += JIntellitype.MOD_WIN;
-         } else if (keycodeMap.containsKey(split[i].toLowerCase())) {
-            keycode = keycodeMap.get(split[i].toLowerCase());
-         }
-      }
+       for (String s : split) {
+           if ("ALT".equalsIgnoreCase(s)) {
+               mask += JIntellitype.MOD_ALT;
+           } else if ("CTRL".equalsIgnoreCase(s) || "CONTROL".equalsIgnoreCase(s)) {
+               mask += JIntellitype.MOD_CONTROL;
+           } else if ("SHIFT".equalsIgnoreCase(s)) {
+               mask += JIntellitype.MOD_SHIFT;
+           } else if ("WIN".equalsIgnoreCase(s)) {
+               mask += JIntellitype.MOD_WIN;
+           } else if (keycodeMap.containsKey(s.toLowerCase())) {
+               keycode = keycodeMap.get(s.toLowerCase());
+           }
+       }
       registerHotKey(identifier, mask, keycode);
    }
 
@@ -382,14 +382,9 @@ public final class JIntellitype implements JIntellitypeConstants {
     * <p>
     * @param identifier the unique identifier received
     */
-   protected void onHotKey(final int identifier) {
+   private void onHotKey(final int identifier) {
       for (final HotkeyListener hotkeyListener : hotkeyListeners) {
-         SwingUtilities.invokeLater(new Runnable() {
-            @Override
-			public void run() {
-               hotkeyListener.onHotKey(identifier);
-            }
-         });
+         SwingUtilities.invokeLater(() -> hotkeyListener.onHotKey(identifier));
       }
    }
 
@@ -398,14 +393,9 @@ public final class JIntellitype implements JIntellitypeConstants {
     * <p>
     * @param command the unique WM_APPCOMMAND received
     */
-   protected void onIntellitype(final int command) {
+   private void onIntellitype(final int command) {
       for (final IntellitypeListener intellitypeListener : intellitypeListeners) {
-         SwingUtilities.invokeLater(new Runnable() {
-            @Override
-			public void run() {
-               intellitypeListener.onIntellitype(command);
-            }
-         });
+         SwingUtilities.invokeLater(() -> intellitypeListener.onIntellitype(command));
       }
    }
 
@@ -417,22 +407,18 @@ public final class JIntellitype implements JIntellitypeConstants {
     * @param swingKeystrokeModifier the Swing KeystrokeModifier to check
     * @return Jintellitype the JIntellitype modifier value
     */
-   protected static int swingToIntelliType(int swingKeystrokeModifier) {
+   private static int swingToIntelliType(int swingKeystrokeModifier) {
       int mask = 0;
-      if ((swingKeystrokeModifier & InputEvent.SHIFT_DOWN_MASK) == InputEvent.SHIFT_DOWN_MASK
-               || (swingKeystrokeModifier & InputEvent.SHIFT_DOWN_MASK) == InputEvent.SHIFT_DOWN_MASK) {
+      if ((swingKeystrokeModifier & InputEvent.SHIFT_DOWN_MASK) == InputEvent.SHIFT_DOWN_MASK) {
          mask |= JIntellitypeConstants.MOD_SHIFT;
       }
-      if ((swingKeystrokeModifier & InputEvent.ALT_DOWN_MASK) == InputEvent.ALT_DOWN_MASK
-               || (swingKeystrokeModifier & InputEvent.ALT_DOWN_MASK) == InputEvent.ALT_DOWN_MASK) {
+      if ((swingKeystrokeModifier & InputEvent.ALT_DOWN_MASK) == InputEvent.ALT_DOWN_MASK) {
          mask |= JIntellitypeConstants.MOD_ALT;
       }
-      if ((swingKeystrokeModifier & InputEvent.CTRL_DOWN_MASK) == InputEvent.CTRL_DOWN_MASK
-               || (swingKeystrokeModifier & InputEvent.CTRL_DOWN_MASK) == InputEvent.CTRL_DOWN_MASK) {
+      if ((swingKeystrokeModifier & InputEvent.CTRL_DOWN_MASK) == InputEvent.CTRL_DOWN_MASK) {
          mask |= JIntellitypeConstants.MOD_CONTROL;
       }
-      if ((swingKeystrokeModifier & InputEvent.META_DOWN_MASK) == InputEvent.META_DOWN_MASK
-               || (swingKeystrokeModifier & InputEvent.META_DOWN_MASK) == InputEvent.META_DOWN_MASK) {
+      if ((swingKeystrokeModifier & InputEvent.META_DOWN_MASK) == InputEvent.META_DOWN_MASK) {
          mask |= JIntellitypeConstants.MOD_WIN;
       }
 
@@ -652,7 +638,7 @@ public final class JIntellitype implements JIntellitypeConstants {
    /**
     * Checks if there's an instance with hidden window title = appName running
     * Can be used to detect that another instance of your app is already running
-    * (so exit..)
+    * (so exit...)
     * <p>
     * @param appName = the title of the hidden window to search for
     */

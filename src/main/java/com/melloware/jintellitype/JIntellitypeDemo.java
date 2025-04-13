@@ -2,17 +2,17 @@
  * JIntellitype
  * -----------------
  * Copyright 2005-2019 Emil A. Lefkof III, Melloware Inc.
- *
+ * <p>
  * I always give it my best shot to make a program useful and solid, but
  * remember that there is absolutely no warranty for using this program as
  * stated in the following terms:
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,7 +28,6 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JButton;
@@ -42,8 +41,7 @@ import javax.swing.border.EtchedBorder;
  * Swing based test application to test all the functions of the JIntellitype
  * library.
  * <p>
- * Copyright (c) 1999-2019 Melloware, Inc. <http://www.melloware.com>
- * @author Emil A. Lefkof III <mellowaredev@gmail.com>
+ * Copyright (c) 1999-2025 Melloware, Inc. <a href="http://www.melloware.com">Melloware</a>
  * @version 1.4.0
  */
 public class JIntellitypeDemo extends JFrame implements HotkeyListener, IntellitypeListener {
@@ -87,7 +85,7 @@ public class JIntellitypeDemo extends JFrame implements HotkeyListener, Intellit
 			System.exit(1);
 		}
 
-		// next check to make sure JIntellitype DLL can be found and we are on
+		// next check to make sure JIntellitype DLL can be found, and we are on
 		// a Windows operating System
 		if (!JIntellitype.isJIntellitypeSupported()) {
 			System.exit(1);
@@ -106,7 +104,7 @@ public class JIntellitypeDemo extends JFrame implements HotkeyListener, Intellit
 	 * @see com.melloware.jintellitype.HotkeyListener#onHotKey(int)
 	 */
 	public void onHotKey(int aIdentifier) {
-		output("WM_HOTKEY message received " + Integer.toString(aIdentifier));
+		output("WM_HOTKEY message received " + aIdentifier);
 	}
 
 	/*
@@ -118,58 +116,58 @@ public class JIntellitypeDemo extends JFrame implements HotkeyListener, Intellit
 
 		switch (aCommand) {
 		case JIntellitype.APPCOMMAND_BROWSER_BACKWARD:
-			output("BROWSER_BACKWARD message received " + Integer.toString(aCommand));
+			output("BROWSER_BACKWARD message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_BROWSER_FAVOURITES:
-			output("BROWSER_FAVOURITES message received " + Integer.toString(aCommand));
+			output("BROWSER_FAVOURITES message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_BROWSER_FORWARD:
-			output("BROWSER_FORWARD message received " + Integer.toString(aCommand));
+			output("BROWSER_FORWARD message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_BROWSER_HOME:
-			output("BROWSER_HOME message received " + Integer.toString(aCommand));
+			output("BROWSER_HOME message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_BROWSER_REFRESH:
-			output("BROWSER_REFRESH message received " + Integer.toString(aCommand));
+			output("BROWSER_REFRESH message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_BROWSER_SEARCH:
-			output("BROWSER_SEARCH message received " + Integer.toString(aCommand));
+			output("BROWSER_SEARCH message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_BROWSER_STOP:
-			output("BROWSER_STOP message received " + Integer.toString(aCommand));
+			output("BROWSER_STOP message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_LAUNCH_APP1:
-			output("LAUNCH_APP1 message received " + Integer.toString(aCommand));
+			output("LAUNCH_APP1 message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_LAUNCH_APP2:
-			output("LAUNCH_APP2 message received " + Integer.toString(aCommand));
+			output("LAUNCH_APP2 message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_LAUNCH_MAIL:
-			output("LAUNCH_MAIL message received " + Integer.toString(aCommand));
+			output("LAUNCH_MAIL message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_MEDIA_NEXTTRACK:
-			output("MEDIA_NEXTTRACK message received " + Integer.toString(aCommand));
+			output("MEDIA_NEXTTRACK message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_MEDIA_PLAY_PAUSE:
-			output("MEDIA_PLAY_PAUSE message received " + Integer.toString(aCommand));
+			output("MEDIA_PLAY_PAUSE message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_MEDIA_PREVIOUSTRACK:
-			output("MEDIA_PREVIOUSTRACK message received " + Integer.toString(aCommand));
+			output("MEDIA_PREVIOUSTRACK message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_MEDIA_STOP:
-			output("MEDIA_STOP message received " + Integer.toString(aCommand));
+			output("MEDIA_STOP message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_VOLUME_DOWN:
-			output("VOLUME_DOWN message received " + Integer.toString(aCommand));
+			output("VOLUME_DOWN message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_VOLUME_UP:
-			output("VOLUME_UP message received " + Integer.toString(aCommand));
+			output("VOLUME_UP message received " + aCommand);
 			break;
 		case JIntellitype.APPCOMMAND_VOLUME_MUTE:
-			output("VOLUME_MUTE message received " + Integer.toString(aCommand));
+			output("VOLUME_MUTE message received " + aCommand);
 			break;
 		default:
-			output("Undefined INTELLITYPE message caught " + Integer.toString(aCommand));
+			output("Undefined INTELLITYPE message caught " + aCommand);
 			break;
 		}
 	}
@@ -255,21 +253,13 @@ public class JIntellitypeDemo extends JFrame implements HotkeyListener, Intellit
 	 */
 	private void initComponents() {
 		mainPanel.setLayout(new BorderLayout());
-		topPanel.setBorder(new EtchedBorder(1));
+		topPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 		bottomPanel.setLayout(new BorderLayout());
-		bottomPanel.setBorder(new EtchedBorder(1));
+		bottomPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 		btnRegisterHotKey.setText("RegisterHotKey");
-		btnRegisterHotKey.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnRegisterHotKey_actionPerformed(e);
-			}
-		});
+		btnRegisterHotKey.addActionListener(this::btnRegisterHotKey_actionPerformed);
 		btnUnregisterHotKey.setText("UnregisterHotKey");
-		btnUnregisterHotKey.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnUnregisterHotKey_actionPerformed(e);
-			}
-		});
+		btnUnregisterHotKey.addActionListener(this::btnUnregisterHotKey_actionPerformed);
 		topPanel.add(btnRegisterHotKey);
 		topPanel.add(btnUnregisterHotKey);
 		scrollPane.getViewport().add(textArea);

@@ -6,109 +6,132 @@
 
 [![JIntellitype Logo](https://github.com/melloware/jintellitype/blob/master/src/test/resources/jintellitype.png?raw=true)](https://melloware.com)
 
+JIntellitype is a Java JNI library that provides an interface to Microsoft Intellitype keyboard commands and global hotkey registration in Windows applications. The library enables Java applications to respond to special media keys (Play, Pause, Stop, etc.) and register global hotkey combinations.
+
+**Note: This library is Windows-only as it uses Windows-specific API calls.**
+
 **If you like this project, please consider supporting me ❤️**
 
 [![GitHub Sponsor](https://img.shields.io/badge/GitHub-FFDD00?style=for-the-badge&logo=github&logoColor=black)](https://github.com/sponsors/melloware)
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.me/mellowareinc)
 
-## Contents
+## Table of Contents
 
-1. Overview
-2. Features
-3. Installation
-4. Quick Usage
-5. Acknowledgements
-6. Feedback
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Building from Source](#building-from-source)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- Register global hotkey combinations that work system-wide in Windows
+- Receive notifications for special media keys (Play, Pause, Stop, Next, Previous)
+- Support for modifier keys (CTRL, ALT, SHIFT, WIN) in hotkey combinations
+- Automatic DLL management (32/64 bit)
+- Simple and intuitive API
+- Thread-safe implementation
+- Comprehensive error handling
+
+## Installation
+
+### Maven
+
+```xml
+<dependency>
+    <groupId>com.melloware</groupId>
+    <artifactId>jintellitype</artifactId>
+    <version>[VERSION]</version>
+</dependency>
+```
+
+### Gradle
+
+```groovy
+implementation 'com.melloware:jintellitype:[VERSION]'
+```
+
+The native DLLs are automatically extracted and loaded at runtime. No manual installation steps are required.
+
+## Usage
+
+### Basic Setup
+
+```java
+// Initialize JIntellitype
+JIntellitype.getInstance().addHotKeyListener(identifier -> {
+    System.out.println("Hotkey pressed: " + identifier);
+});
+
+JIntellitype.getInstance().addIntellitypeListener(command -> {
+    System.out.println("Intellitype command: " + command);
+});
+
+// Register hotkeys
+JIntellitype.getInstance().registerHotKey(1, JIntellitype.MOD_WIN, 'A');  // Windows + A
+JIntellitype.getInstance().registerHotKey(2, JIntellitype.MOD_ALT + JIntellitype.MOD_SHIFT, 'B');  // Alt + Shift + B
+
+// Clean up on exit
+Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+    JIntellitype.getInstance().cleanUp();
+}));
+```
+
+### Supported Modifier Keys
+
+- `JIntellitype.MOD_ALT` - Alt key
+- `JIntellitype.MOD_CONTROL` - Control key
+- `JIntellitype.MOD_SHIFT` - Shift key
+- `JIntellitype.MOD_WIN` - Windows key
+
+### Supported Media Commands
+
+- `APPCOMMAND_MEDIA_PLAY_PAUSE` - Play/Pause
+- `APPCOMMAND_MEDIA_STOP` - Stop
+- `APPCOMMAND_MEDIA_NEXTTRACK` - Next Track
+- `APPCOMMAND_MEDIA_PREVIOUSTRACK` - Previous Track
+- `APPCOMMAND_VOLUME_MUTE` - Mute
+- `APPCOMMAND_VOLUME_UP` - Volume Up
+- `APPCOMMAND_VOLUME_DOWN` - Volume Down
+
+## Examples
+
+See the [JIntellitypeDemo](https://github.com/melloware/jintellitype/blob/master/src/main/java/com/melloware/jintellitype/JIntellitypeDemo.java) class for a complete working example.
+
+## Building from Source
+
+### Prerequisites
+
+- Java JDK 8 or higher
+- Apache Maven
+- Visual Studio C++ (for native code compilation)
+
+### Build Steps
+
+1. Clone the repository
+```bash
+git clone https://github.com/melloware/jintellitype.git
+```
+
+2. Build with Maven
+```bash
+mvn clean package
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](http://www.apache.org/licenses/LICENSE-2.0.html) file for details.
 
 ---
 
-## 1.Overview
+## Support
 
-   JIntellitype is an API for interacting with Microsoft Intellitype keyboard commands as well as registering for Global Hotkeys in your application.
-   The API is a Java JNI library that uses a DLL to do all the communication with Windows.
-   This library ONLY works on Windows.
-
-   Have you ever wanted to have CTRL+SHIFT+G maximize your Swing application on the desktop even if that application did not have focus?
-   Now you can by registering a Windows Hotkey combination your application will be alerted when the combination you select is pressed anywhere in Windows.
-
-   Have you ever wanted to react to those special Play, Pause, Stop keys on some Microsoft and Logitech keyboards?
-   Even some laptops now have those special keys built in and if you want your application to "listen" for them, now you
-   can!
-
-## 2.Features
-* Can register global hotkey combinations in Windows.
-
-* Application is notified even if it does not have focus.
-
-* Can react to those Play, Pause, Stop, Next, Forward Media keys like Winamp.
-
-* Very little code, easy to use API.
-
-* Examples included in JIntellitypeTester.java.
-
-## 3.Installation
-
-FOR USERS:
-
- The 32/64 bit dlls get extracted automatically.
-
-FOR DEVELOPERS:
-
-* To build you need [Apache Maven](https://maven.apache.org/) or higher installed from Apache.
-  Just run "mvn package" from the directory where the pom.xml is located to build the project.
-
-* To build the C++ code you need Visual Studio C++.
-
-
-## 4.Quick Usage
-
-```java
-       // Create JIntellitype
-       ...
-        JIntellitype.getInstance().addHotKeyListener(new HotKeyListener() {...);
-        JIntellitype.getInstance().addIntellitypeListener(new IntellitypeListener() {...);
-       ...
-
-        // Assign global hotkeys to Windows+A and ALT+SHIFT+B
-        JIntellitype.getInstance().registerHotKey(1, JIntellitype.MOD_WIN, (int)'A');
-        JIntellitype.getInstance().registerHotKey(2, JIntellitype.MOD_ALT + JIntellitype.MOD_SHIFT, (int)'B');
-
-        // listen for hotkey
-        public void onHotKey(int aIdentifier) {
-           if (aIdentifier == 1)
-             System.out.println("WINDOWS+A hotkey pressed");
-           }
-        }
-
-        // listen for intellitype play/pause command
-        public void onIntellitype(int aCommand) {
-            switch (aCommand) {
-                case JIntellitype.APPCOMMAND_MEDIA_PLAY_PAUSE:
-                    System.out.println("Play/Pause message received " + Integer.toString(aCommand));
-                break;
-                default:
-                    System.out.println("Undefined INTELLITYPE message caught " + Integer.toString(aCommand));
-                break;
-            }
-        }
-
-       // Termination
-       ...
-       JIntellitype.getInstance().cleanUp();
-       System.exit(0);
-```
-
-See demo at  [JIntellitype Demo Application](https://github.com/melloware/jintellitype/blob/master/src/main/java/com/melloware/jintellitype/JIntellitypeDemo.java)  for more info..
-
-## 5.Acknowledgements
-
-   JIntellitype is distributed with a small number of libraries on which it depends.
-
-   Those libraries are:
-
- * None currently
-
-## 6.Feedback
-   Your feedback on JIntellitype (hopefully constructive) is always welcome.
-
- Please visit http://www.melloware.com/ for links to browse and join mailing lists, file bugs and submit feature requests.
+- Visit [Melloware](https://www.melloware.com/) for additional information and support
+- Report issues on [GitHub Issues](https://github.com/melloware/jintellitype/issues)
+- Follow [@melloware](https://twitter.com/melloware) on Twitter for updates

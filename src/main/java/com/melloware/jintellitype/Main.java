@@ -28,8 +28,7 @@ import java.util.Properties;
  * jar. Outputs version information and other information about the environment 
  * on which the jar is being executed.
  * <p>
- * Copyright (c) 1999-2019 Melloware, Inc. <http://www.melloware.com>
- * @author Emil A. Lefkof III <mellowaredev@gmail.com>
+ * Copyright (c) 1999-2025 Melloware, Inc. <a href="http://www.melloware.com">Melloware</a>
  * @version 1.4.0
  */
 public final class Main {
@@ -54,7 +53,7 @@ public final class Main {
         System.out.println("Operating environment \"" + System.getProperty("os.name") + "\""
                            + " version " + System.getProperty("os.version") + " on " + System.getProperty("os.arch"));
 
-        System.out.println("For more information on JIntellitype please visit http://www.melloware.com");
+        System.out.println("For more information on JIntellitype please visit https://www.melloware.com");
     }
 
     /**
