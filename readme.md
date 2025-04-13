@@ -1,10 +1,14 @@
-[![Maven](https://img.shields.io/maven-central/v/com.melloware/jintellitype.svg)](https://repo1.maven.org/maven2/com/melloware/jintellitype/)
-[![Javadocs](http://javadoc.io/badge/com.melloware/jintellitype.svg)](https://javadoc.io/doc/com.melloware/jintellitype)
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-
+<div align="center">
+    <a href="https://github.com/melloware/jintellitype" alt="JIntellitype">
+        <img src="https://github.com/melloware/jintellitype/blob/master/src/test/resources/jintellitype.png?raw=true" />
+    </a>
+ 
 # JIntellitype
+</div>
 
-[![JIntellitype Logo](https://github.com/melloware/jintellitype/blob/master/src/test/resources/jintellitype.png?raw=true)](https://melloware.com)
+[![Maven](https://img.shields.io/maven-central/v/com.melloware/jintellitype.svg?style=for-the-badge)](https://repo1.maven.org/maven2/com/melloware/jintellitype/)
+[![Javadocs](http://javadoc.io/badge/com.melloware/jintellitype.svg?style=for-the-badge)](https://javadoc.io/doc/com.melloware/jintellitype)
+[![License](http://img.shields.io/:license-apache-blue.svg?style=for-the-badge)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 JIntellitype is a Java JNI library that provides an interface to Microsoft Intellitype keyboard commands and global hotkey registration in Windows applications. The library enables Java applications to respond to special media keys (Play, Pause, Stop, etc.) and register global hotkey combinations.
 
