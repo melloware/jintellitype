@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.melloware</groupId>
 	<artifactId>jintellitype</artifactId>
-	<version>1.5.0-SNAPSHOT</version>
+	<version>1.5.0</version>
 	<packaging>jar</packaging>
 	<name>JIntellitype</name>
 	<description>JIntellitype - JNI Java bridge to Microsoft Intellitype commands.</description>
