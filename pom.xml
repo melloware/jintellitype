@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.melloware</groupId>
 	<artifactId>jintellitype</artifactId>
@@ -54,7 +55,7 @@
 		</contributor>
 		<contributor>
 			<name>Thomas Beckers</name>
-			<email/>
+			<email />
 			<url>https://www.atunes.org/</url>
 			<organization>aTunes Team</organization>
 			<organizationUrl>https://www.atunes.org/</organizationUrl>
@@ -64,7 +65,7 @@
 		</contributor>
 		<contributor>
 			<name>Karl von Randow</name>
-			<email/>
+			<email />
 			<url>https://xk72.com/</url>
 			<organization>XK72</organization>
 			<organizationUrl>https://xk72.com/</organizationUrl>
@@ -74,7 +75,7 @@
 		</contributor>
 		<contributor>
 			<name>Johannes Frank</name>
-			<email/>
+			<email />
 			<url>http://radis.sf.net/</url>
 			<organization>RadiS</organization>
 			<organizationUrl>http://radis.sf.net/</organizationUrl>
@@ -84,7 +85,7 @@
 		</contributor>
 		<contributor>
 			<name>Wordoholic</name>
-			<email/>
+			<email />
 			<url>https://wordoholic.com/</url>
 			<organization>Wordoholic</organization>
 			<organizationUrl>https://wordoholic.com/</organizationUrl>
@@ -94,20 +95,20 @@
 		</contributor>
 		<contributor>
 			<name>Zeroflag</name>
-			<email/>
-			<url/>
+			<email />
+			<url />
 			<organization>ZeroFlag</organization>
-			<organizationUrl/>
+			<organizationUrl />
 			<roles>
 				<role>x64 DLL Contributor</role>
 			</roles>
 		</contributor>
 		<contributor>
 			<name>Lars</name>
-			<email/>
-			<url/>
+			<email />
+			<url />
 			<organization>Hamburg</organization>
-			<organizationUrl/>
+			<organizationUrl />
 			<roles>
 				<role>Strings for Register Hotkeys</role>
 			</roles>
@@ -116,8 +117,8 @@
 			<name>Rocket</name>
 			<email>ma2014119@outlook.com</email>
 			<url>https://github.com/RocketMaDev</url>
-			<organization/>
-			<organizationUrl/>
+			<organization />
+			<organizationUrl />
 			<roles>
 				<role>Make it usable above JDK 9</role>
 			</roles>
@@ -160,7 +161,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>>3.11.2</version>
+					<version>3.11.2</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -301,16 +302,30 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.14.0</version>
-			</plugin>
-			<plugin>
 				<groupId>org.jreleaser</groupId>
 				<artifactId>jreleaser-maven-plugin</artifactId>
 				<version>1.18.0</version>
 				<configuration>
 					<jreleaser>
+						<release>
+							<github>
+								<tagName>{{projectVersion}}</tagName>
+								<releaseName>{{projectVersion}}</releaseName>
+								<overwrite>true</overwrite>
+								<changelog>
+									<formatted>ALWAYS</formatted>
+									<format>- {{commitShortHash}} {{commitTitle}}</format>
+									<preset>conventional-commits</preset>
+									<contributors>
+										<format>- {{contributorName}}</format>
+									</contributors>
+									<hide>
+										<categories>merge</categories>
+										<contributors>GitHub,dependabot</contributors>
+									</hide>
+								</changelog>
+							</github>
+						</release>
 						<signing>
 							<active>ALWAYS</active>
 							<armored>true</armored>
@@ -399,12 +414,12 @@
 	</reporting>
 	<profiles>
 		<profile>
-			<id>publication</id>
+			<id>release</id>
 			<properties>
 				<altDeploymentRepository>local::file:./target/staging-deploy</altDeploymentRepository>
 			</properties>
 			<build>
-				<defaultGoal>deploy</defaultGoal>
+				<defaultGoal>deploy jreleaser:full-release</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
