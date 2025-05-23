@@ -57,7 +57,7 @@ jobs:
           JRELEASER_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           JRELEASER_GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           JRELEASER_GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
-        run: mvn clean -Prelease
+        run: mvn -Prelease
 
       - name: Set next version
         if: github.event_name == 'workflow_dispatch'
