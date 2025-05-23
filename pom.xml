@@ -124,9 +124,9 @@
 		</contributor>
 	</contributors>
 	<scm>
-		<connection>scm:svn:https://jintellitype.googlecode.com/svn/trunk</connection>
-		<developerConnection>scm:svn:https://jintellitype.googlecode.com/svn/trunk</developerConnection>
-		<url>scm:svn:https://jintellitype.googlecode.com/svn/trunk</url>
+		<connection>scm:git:https://github.com/melloware/jintellitype.git</connection>
+		<developerConnection>scm:git:https://github.com/melloware/jintellitype.git</developerConnection>
+		<url>https://github.com/melloware/jintellitype</url>
 	</scm>
 	<properties>
 		<organization.logo>https://melloware.com/images/header.jpg</organization.logo>
@@ -145,6 +145,30 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>3.1.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.14.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>>3.11.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.3.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -177,14 +201,6 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>3.1.4</version>
-				<configuration>
-					<deployAtEnd>false</deployAtEnd>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.11.2</version>
 				<configuration>
@@ -211,20 +227,6 @@
 				<configuration>
 					<propertiesEncoding>${project.build.sourceEncoding}</propertiesEncoding>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.3.1</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -304,29 +306,29 @@
 				<version>3.14.0</version>
 			</plugin>
 			<plugin>
-                <groupId>org.jreleaser</groupId>
-                <artifactId>jreleaser-maven-plugin</artifactId>
+				<groupId>org.jreleaser</groupId>
+				<artifactId>jreleaser-maven-plugin</artifactId>
 				<version>1.18.0</version>
-                <configuration>
-                    <jreleaser>
-                        <signing>
-                            <active>ALWAYS</active>
-                            <armored>true</armored>
-                        </signing>
-                        <deploy>
-                            <maven>
-                                <mavenCentral>
-                                    <sonatype>
-                                        <active>ALWAYS</active>
-                                        <url>https://central.sonatype.com/api/v1/publisher</url>
-                                        <stagingRepositories>target/staging-deploy</stagingRepositories>
-                                    </sonatype>
-                                </mavenCentral>
-                            </maven>
-                        </deploy>
-                    </jreleaser>
-                </configuration>
-            </plugin>
+				<configuration>
+					<jreleaser>
+						<signing>
+							<active>ALWAYS</active>
+							<armored>true</armored>
+						</signing>
+						<deploy>
+							<maven>
+								<mavenCentral>
+									<sonatype>
+										<active>ALWAYS</active>
+										<url>https://central.sonatype.com/api/v1/publisher</url>
+										<stagingRepositories>target/staging-deploy</stagingRepositories>
+									</sonatype>
+								</mavenCentral>
+							</maven>
+						</deploy>
+					</jreleaser>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<reporting>
@@ -396,6 +398,47 @@
 		</plugins>
 	</reporting>
 	<profiles>
+		<profile>
+			<id>publication</id>
+			<properties>
+				<altDeploymentRepository>local::file:./target/staging-deploy</altDeploymentRepository>
+			</properties>
+			<build>
+				<defaultGoal>deploy</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+								<configuration>
+									<attach>true</attach>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+								<configuration>
+									<attach>true</attach>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>release</id>
 			<activation>
