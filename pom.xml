@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.melloware</groupId>
 	<artifactId>jintellitype</artifactId>
-	<version>1.5.0</version>
+	<version>1.5.1</version>
 	<packaging>jar</packaging>
 	<name>JIntellitype</name>
 	<description>JIntellitype - JNI Java bridge to Microsoft Intellitype commands.</description>
@@ -303,6 +303,30 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.14.0</version>
 			</plugin>
+			<plugin>
+                <groupId>org.jreleaser</groupId>
+                <artifactId>jreleaser-maven-plugin</artifactId>
+				<version>1.18.0</version>
+                <configuration>
+                    <jreleaser>
+                        <signing>
+                            <active>ALWAYS</active>
+                            <armored>true</armored>
+                        </signing>
+                        <deploy>
+                            <maven>
+                                <mavenCentral>
+                                    <sonatype>
+                                        <active>ALWAYS</active>
+                                        <url>https://central.sonatype.com/api/v1/publisher</url>
+                                        <stagingRepositories>target/staging-deploy</stagingRepositories>
+                                    </sonatype>
+                                </mavenCentral>
+                            </maven>
+                        </deploy>
+                    </jreleaser>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 	<reporting>
