@@ -40,13 +40,13 @@ jobs:
       - name: Set version
         if: github.event_name == 'workflow_dispatch'
         run: |
-          mvn versions:set -DgenerateBackupPoms=false -DnewVersion=${{ github.event.inputs.version }}
+          mvn -B -ntp -ntp versions:set versions:commit -DnewVersion=${{ github.event.inputs.version }}
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add pom.xml
           git commit -m "Release version ${{ github.event.inputs.version }}"
           git tag -a "v${{ github.event.inputs.version }}" -m "Release version ${{ github.event.inputs.version }}"
-          git push origin main
+          git push origin master
           git push origin "v${{ github.event.inputs.version }}"
 
       - name: Release
@@ -65,4 +65,4 @@ jobs:
           mvn versions:set -DgenerateBackupPoms=false -DnewVersion=${{ github.event.inputs.next_version }}
           git add pom.xml
           git commit -m "Prepare for next development version"
-          git push origin main
+          git push origin master
