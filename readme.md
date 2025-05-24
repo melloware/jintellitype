@@ -125,6 +125,21 @@ git clone https://github.com/melloware/jintellitype.git
 mvn clean package
 ```
 
+## Releasing
+
+1. Go to the `Actions` tab in GitHub
+2. Select the "Release" workflow
+3. Click "Run workflow"
+4. You will be prompted for:
+   - Branch (default to `master`)
+   - Version to release (e.g. 8.0.2)
+   - Next development version (e.g. 8.0.3-SNAPSHOT)
+5. The workflow will automatically:
+   - Set the release version in all pom.xml files
+   - Create and push a release tag
+   - Build and deploy artifacts to Maven Central
+   - Update version to the next development version
+   - 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
